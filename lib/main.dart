@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Column(children: [Text('Animated Design Flutter Edit My first animation design 1234' )]),
+          child: Column(children: [Text('Animated Design Flutter Edit My first animation design Last Coyy' )]),
         ),
       ),
     );
