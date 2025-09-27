@@ -10,7 +10,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(body: Center(child: Text('Animated Design Flutter Edit'))),
+      home: Scaffold(
+        body: Center(
+          child: Column(children: [Text('Animated Design Flutter Edit')]),
+        ),
+      ),
     );
   }
 }
