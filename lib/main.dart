@@ -122,13 +122,22 @@ class _MyQuizState extends State<MyQuiz> {
                 height: 200,
                 width: 400,
                 decoration: BoxDecoration(
-                  color: Colors.transparent,
+                  color: Colors.blueAccent[100],
                   border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                  child: Center(child: Text(q.question)),
+                  child: Center(
+                    child: Text(
+                      q.question,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Padding(
