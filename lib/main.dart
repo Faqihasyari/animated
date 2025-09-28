@@ -77,11 +77,25 @@ class MyQuiz extends StatefulWidget {
 class _MyQuizState extends State<MyQuiz> {
   final QuizService _quizService = QuizService();
   late Future<List<QuizQuestion>> _questions;
+  int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _questions = _quizService.fetchQuestions();
+  }
+
+  void _nextQuestion(List<QuizQuestion> questions) {
+    setState(() {
+      if (_currentIndex < questions.length - 1) {
+        _currentIndex++;
+      } else {
+        // kalau sudah terakhir, bisa tampilkan skor atau selesai
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Kuis selesai 🎉")));
+      }
+    });
   }
 
   @override
@@ -99,6 +113,8 @@ class _MyQuizState extends State<MyQuiz> {
           if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(child: Text("Tidak ada soal"));
           }
+          final questions = snapshot.data!;
+          final q = questions[_currentIndex];
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -109,7 +125,10 @@ class _MyQuizState extends State<MyQuiz> {
                   color: Colors.transparent,
                   border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                  child: Center(child: Text(q.question)),
                 ),
               ),
               Padding(
