@@ -120,9 +120,23 @@ class _MyQuizState extends State<MyQuiz> {
       });
     } else {
       // kalau salah, kasih notifikasi
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Jawaban anda salah ❌")));
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text("Jawaban Anda"),
+            content: const Text("Jawaban anda salah ❌"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // tutup dialog
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
@@ -178,7 +192,9 @@ class _MyQuizState extends State<MyQuiz> {
                   horizontal: 60,
                 ),
                 child: TextField(
+                  controller: _answerController,
                   decoration: InputDecoration(
+                    hintText: 'Masukkan Jawaban',
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.grey.shade400),
                       borderRadius: BorderRadius.circular(5),
