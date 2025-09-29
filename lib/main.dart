@@ -78,6 +78,7 @@ class MyQuiz extends StatefulWidget {
 class _MyQuizState extends State<MyQuiz> {
   final QuizService _quizService = QuizService();
   late Future<List<QuizQuestion>> _questions;
+  final TextEditingController _answerController = TextEditingController();
   int _currentIndex = 0;
 
   @override
@@ -97,6 +98,32 @@ class _MyQuizState extends State<MyQuiz> {
         ).showSnackBar(SnackBar(content: Text("Kuis selesai 🎉")));
       }
     });
+  }
+
+  void _checkAnswer(List<QuizQuestion> questions) {
+    final userAnswer = _answerController.text.trim().toLowerCase();
+    final correctAnswer = questions[_currentIndex].correctAnswer
+        .trim()
+        .toLowerCase();
+
+    if (userAnswer == correctAnswer) {
+      // kalau bener, lanjut soal berikutnya
+      setState(() {
+        if (_currentIndex < questions.length - 1) {
+          _currentIndex++;
+          _answerController.clear(); // kosongkan jawaban
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(const SnackBar(content: Text("Kuis selesai 🎉")));
+        }
+      });
+    } else {
+      // kalau salah, kasih notifikasi
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Jawaban anda salah ❌")));
+    }
   }
 
   @override
@@ -181,7 +208,7 @@ class _MyQuizState extends State<MyQuiz> {
                 borderRadius: 25,
                 animate: true,
                 margin: const EdgeInsets.all(10),
-                onPressed: () {},
+                onPressed: () => _checkAnswer(questions),
                 child: Text("JAWAB"),
               ),
             ],
