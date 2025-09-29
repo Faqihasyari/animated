@@ -123,7 +123,7 @@ class _MyQuizState extends State<MyQuiz> {
                 width: 400,
                 decoration: BoxDecoration(
                   color: Colors.blueAccent[100],
-                  border: Border.all(color: Colors.black),
+                  border: Border.all(color: Colors.yellowAccent, width: 6),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 child: Padding(
