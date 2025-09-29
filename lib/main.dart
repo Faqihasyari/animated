@@ -123,7 +123,10 @@ class _MyQuizState extends State<MyQuiz> {
                 width: 400,
                 decoration: BoxDecoration(
                   color: Colors.blueAccent[100],
-                  border: Border.all(color: Colors.yellowAccent, width: 6),
+                  border: Border.all(
+                    color: const Color.fromARGB(97, 0, 0, 0),
+                    width: 6,
+                  ),
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 child: Padding(
@@ -133,6 +136,7 @@ class _MyQuizState extends State<MyQuiz> {
                       q.question,
                       textAlign: TextAlign.center,
                       style: TextStyle(
+                        color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.w700,
                       ),
