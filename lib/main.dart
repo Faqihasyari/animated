@@ -1,3 +1,4 @@
+import 'package:custom_button_builder/custom_button_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/api_essay.dart';
 import 'package:flutter_application_1/kuis_service.dart';
@@ -171,12 +172,17 @@ class _MyQuizState extends State<MyQuiz> {
                   ),
                 ),
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(),
-                onPressed: () {
-                  _currentIndex;
-                },
-                child: Text('JAWAB'),
+              CustomButton(
+                width: 100,
+                backgroundColor: Colors.blue.shade200,
+                isThreeD: true,
+
+                height: 50,
+                borderRadius: 25,
+                animate: true,
+                margin: const EdgeInsets.all(10),
+                onPressed: () {},
+                child: Text("JAWAB"),
               ),
             ],
           );
