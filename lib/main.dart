@@ -151,11 +151,32 @@ class _MyQuizState extends State<MyQuiz> {
                 ),
                 child: TextField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade400),
                       borderRadius: BorderRadius.circular(5),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      // <- ini yang dipakai saat fokus
+                      borderSide: BorderSide(color: Colors.black38, width: 2),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                 ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(),
+                onPressed: () {
+                  _currentIndex;
+                },
+                child: Text('JAWAB'),
               ),
             ],
           );
