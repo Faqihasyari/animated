@@ -47,6 +47,15 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 20),
             Container(
               width: double.infinity,
+              height: 110,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 216, 130, 2),
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+            SizedBox(height: 100),
+            Container(
+              width: double.infinity,
               height: 100,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 216, 130, 2),
