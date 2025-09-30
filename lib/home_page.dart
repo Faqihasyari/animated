@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -54,6 +55,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(height: 100),
+            Text('Mode Practice'),
             Container(
               width: double.infinity,
               height: 100,
