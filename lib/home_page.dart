@@ -44,10 +44,14 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            SizedBox(height: 20),
             Container(
               width: double.infinity,
               height: 100,
-              color: Colors.orangeAccent,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 216, 130, 2),
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
           ],
         ),
