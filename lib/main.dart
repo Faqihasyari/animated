@@ -12,59 +12,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyQuiz());
-  }
-}
-
-class QuizPage extends StatefulWidget {
-  @override
-  State<QuizPage> createState() => _QuizPageState();
-}
-
-class _QuizPageState extends State<QuizPage> {
-  final QuizService _quizService = QuizService();
-  late Future<List<QuizQuestion>> _questions;
-
-  @override
-  void initState() {
-    super.initState();
-    _questions = _quizService.fetchQuestions();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Kuis Flutter")),
-      body: FutureBuilder<List<QuizQuestion>>(
-        future: _questions,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
-          }
-          if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text("Tidak ada soal"));
-          }
-
-          final questions = snapshot.data!;
-          return ListView.builder(
-            itemCount: questions.length,
-            itemBuilder: (context, index) {
-              final q = questions[index];
-              return Card(
-                margin: EdgeInsets.all(8),
-                child: ListTile(
-                  title: Text(q.question),
-                  subtitle: Text("Jawaban: ${q.correctAnswer}"),
-                ),
-              );
-            },
-          );
-        },
-      ),
-    );
+    return MaterialApp(home: MyQuiz(), debugShowCheckedModeBanner: false);
   }
 }
 
@@ -85,19 +33,6 @@ class _MyQuizState extends State<MyQuiz> {
   void initState() {
     super.initState();
     _questions = _quizService.fetchQuestions();
-  }
-
-  void _nextQuestion(List<QuizQuestion> questions) {
-    setState(() {
-      if (_currentIndex < questions.length - 1) {
-        _currentIndex++;
-      } else {
-        // kalau sudah terakhir, bisa tampilkan skor atau selesai
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Kuis selesai 🎉")));
-      }
-    });
   }
 
   void _checkAnswer(List<QuizQuestion> questions) {
@@ -129,7 +64,7 @@ class _MyQuizState extends State<MyQuiz> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop(); // tutup dialog
+                  Navigator.of(context).pop();
                 },
                 child: const Text("OK"),
               ),
@@ -221,7 +156,7 @@ class _MyQuizState extends State<MyQuiz> {
                 isThreeD: true,
 
                 height: 50,
-                borderRadius: 25,
+                borderRadius: 5,
                 animate: true,
                 margin: const EdgeInsets.all(10),
                 onPressed: () => _checkAnswer(questions),
