@@ -50,8 +50,20 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 110,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 216, 130, 2),
+                color: const Color.fromARGB(255, 194, 117, 1),
                 borderRadius: BorderRadius.circular(15),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Row(
+                  children: [
+                    Icon(Icons.ac_unit_sharp),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Text('2300'), Text('Exp. Points')],
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(height: 100),
@@ -60,7 +72,7 @@ class _HomePageState extends State<HomePage> {
               width: double.infinity,
               height: 100,
               decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 216, 130, 2),
+                color: const Color.fromARGB(255, 62, 129, 7),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
