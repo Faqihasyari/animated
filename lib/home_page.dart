@@ -62,17 +62,54 @@ class _HomePageState extends State<HomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [Text('2300'), Text('Exp. Points')],
                     ),
+                    SizedBox(width: 50),
+
+                    Icon(Icons.ac_unit_sharp),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Text('2300'), Text('Exp. Points')],
+                    ),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 20),
             Text('Mode Practice'),
             Container(
               width: double.infinity,
               height: 100,
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 62, 129, 7),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            SizedBox(height: 40),
+
+            Container(
+              width: double.infinity,
+              height: 100,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 235, 223, 174),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            SizedBox(height: 20),
+
+            Container(
+              width: double.infinity,
+              height: 100,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 235, 223, 174),
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            SizedBox(height: 20),
+
+            Container(
+              width: double.infinity,
+              height: 100,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 235, 223, 174),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
