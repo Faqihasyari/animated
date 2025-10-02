@@ -165,6 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryColor,
+
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 26),
         child: Column(
@@ -183,6 +184,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       'https://media.istockphoto.com/id/2208884525/id/foto/permukaan-daun-dengan-tetesan-air-makro-dangkal-dofleaf-permukaan-dengan-tetesan-air-makro-dof.jpg?s=1024x1024&w=is&k=20&c=-tRdIPrCaNYembSMp4c0fvd9XKpKobrc4gNBH0t3y6M=',
                     ),
                   ),
+                ),
+                SizedBox(width: 15),
+                Column(
+                  spacing: 5,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Nama User'),
+                    Container(
+                      width: 45,
+                      height: 15,
+                      decoration: BoxDecoration(
+                        border: BoxBorder.all(color: Colors.white, width: 0.5),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Color(0xffD9D9D9).withOpacity(0.5),
+                      ),
+                      child: Center(
+                        child: Text('Role', style: TextStyle(fontSize: 9)),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
