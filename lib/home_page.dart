@@ -192,18 +192,44 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Text('Nama User'),
                     Container(
-                      width: 45,
-                      height: 15,
+                      width: 55,
+                      height: 25,
                       decoration: BoxDecoration(
                         border: BoxBorder.all(color: Colors.white, width: 0.5),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(20),
                         color: Color(0xffD9D9D9).withOpacity(0.5),
                       ),
                       child: Center(
-                        child: Text('Role', style: TextStyle(fontSize: 9)),
+                        child: Text('Role', style: TextStyle(fontSize: 12)),
                       ),
                     ),
                   ],
+                ),
+                Spacer(),
+                Container(
+                  width: 100,
+                  height: 41,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            'https://media.istockphoto.com/id/2208884525/id/foto/permukaan-daun-dengan-tetesan-air-makro-dangkal-dofleaf-permukaan-dengan-tetesan-air-makro-dof.jpg?s=1024x1024&w=is&k=20&c=-tRdIPrCaNYembSMp4c0fvd9XKpKobrc4gNBH0t3y6M=',
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20),
+                        child: Text('1200'),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
