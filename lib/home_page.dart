@@ -258,9 +258,28 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [Text('Tugas harian'), Text('14 Soal')],
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(18.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Tugas harian'),
+                              SizedBox(height: 10),
+                              Text('14 Soal'),
+                            ],
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment(0.7, -0.7),
+                          child: CircleAvatar(
+                            child: Icon(Icons.access_time_filled_rounded),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
