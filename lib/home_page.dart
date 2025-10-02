@@ -233,6 +233,38 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            SizedBox(height: 25),
+            Container(
+              width: double.infinity,
+              height: 170,
+              decoration: BoxDecoration(
+                color: containerColor.withOpacity(0.25),
+                borderRadius: BorderRadius.circular(13),
+              ),
+              child: Row(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Container(
+                        width: 160,
+                        height: 160,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: containerColor2.withOpacity(0.5),
+                        ),
+                        child: Image.asset('assets/container1.png'),
+                      ),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [Text('Tugas harian'), Text('14 Soal')],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
