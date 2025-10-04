@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:custom_button_builder/custom_button_builder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/SignIn_page.dart';
 import 'package:flutter_application_1/api_essay.dart';
 import 'package:flutter_application_1/home_page.dart';
 import 'package:flutter_application_1/kuis_service.dart';
@@ -15,7 +16,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage(), debugShowCheckedModeBanner: false);
+    return MaterialApp(home: SigninPage(), debugShowCheckedModeBanner: false);
   }
 }
 
