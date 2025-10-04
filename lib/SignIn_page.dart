@@ -48,13 +48,18 @@ class _SigninPageState extends State<SigninPage> {
                   height: 40,
                   child: Text(
                     'Masukkan email & password untuk mengakses akun kamu',
-                    style: GoogleFonts.poppins(color: subtitle),
+                    style: TextStyle(color: subtitle),
                     textAlign: TextAlign.center,
                   ),
                 ),
                 TextField(
                   decoration: InputDecoration(
                     filled: true,
+                    labelText: 'Email',
+                    hintStyle: GoogleFonts.poppins(
+                      color: subtitle,
+                      fontSize: 12,
+                    ),
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
