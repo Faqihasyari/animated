@@ -95,6 +95,7 @@ class _SigninPageState extends State<SigninPage> {
                   decoration: InputDecoration(
                     filled: true,
                     labelText: 'Email',
+                    labelStyle: TextStyle(color: subtitle),
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
                       fontSize: 12,
@@ -112,7 +113,8 @@ class _SigninPageState extends State<SigninPage> {
                   controller: passwordController,
                   decoration: InputDecoration(
                     filled: true,
-                    labelText: 'Email',
+                    labelText: 'Password',
+                    labelStyle: TextStyle(color: subtitle),
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
                       fontSize: 12,
@@ -126,6 +128,7 @@ class _SigninPageState extends State<SigninPage> {
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(minimumSize: double.infinity),
                   onPressed: isLoading ? null : login,
                   child: isLoading
                       ? const CircularProgressIndicator(color: Colors.white)
