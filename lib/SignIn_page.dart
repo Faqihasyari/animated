@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
+import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SigninPage extends StatefulWidget {
@@ -10,6 +14,40 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  bool isLoading = false;
+
+  void login() async {
+    setState(() => isLoading = true);
+
+    final res = await ApiService.login(
+      emailController.text.trim(),
+      passwordController.text.trim(),
+    );
+
+    if (!mounted) return; // ✅ tambahkan ini biar aman
+    setState(() => isLoading = false);
+
+    final data = jsonDecode(res.body);
+
+    if (res.statusCode == 200) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Login berhasil!")));
+
+      // 🔹 Ganti halaman, tidak bisa kembali ke login lagi
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MyQuiz()),
+      );
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(data['message'] ?? 'Login gagal')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +91,7 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                 ),
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     filled: true,
                     labelText: 'Email',
@@ -66,6 +105,31 @@ class _SigninPageState extends State<SigninPage> {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
+                ),
+
+                SizedBox(height: 20),
+                TextField(
+                  controller: passwordController,
+                  decoration: InputDecoration(
+                    filled: true,
+                    labelText: 'Email',
+                    hintStyle: GoogleFonts.poppins(
+                      color: subtitle,
+                      fontSize: 12,
+                    ),
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: isLoading ? null : login,
+                  child: isLoading
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text('Login'),
                 ),
               ],
             ),
