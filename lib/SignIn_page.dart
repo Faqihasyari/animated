@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
 import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/registe_page.dart';
 import 'package:flutter_application_1/services/api_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -198,7 +199,14 @@ class _SigninPageState extends State<SigninPage> {
                     Text('Baru disini? Buat akun dulu'),
                     SizedBox(width: 5),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegistePage(),
+                          ),
+                        );
+                      },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero, // 👈 hilangkan jarak default
                         minimumSize: Size(0, 0), // optional: biar makin rapat
