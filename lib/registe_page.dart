@@ -80,6 +80,72 @@ class _RegistePageState extends State<RegistePage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 15),
+                Text('Password'),
+                SizedBox(height: 5),
+                TextField(
+                  // controller: passwordController,
+                  // obscureText: obscurePassword,
+                  decoration: InputDecoration(
+                    filled: true,
+                    // suffixIcon: Padding(
+                    //   padding: const EdgeInsets.only(right: 10),
+                    //   child: IconButton(
+                    //     color: icon,
+                    //     icon: Icon(
+                    //       obscurePassword
+                    //           ? Icons.visibility_off
+                    //           : Icons.visibility,
+                    //     ),
+                    //     onPressed: () {
+                    //       setState(() => obscurePassword = !obscurePassword);
+                    //     },
+                    //   ),
+                    // ),
+                    hintText: 'Password',
+                    hintStyle: GoogleFonts.poppins(
+                      color: subtitle,
+                      fontSize: 12,
+                    ),
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Container(
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [gradient1Button, gradient2Button],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {},
+
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.transparent, // transparan
+                      shadowColor: Colors.transparent, // hilangkan bayangan
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                    ),
+                    // child: isLoading
+                    //     ? const CircularProgressIndicator(color: Colors.white)
+                    //     :
+                    child: Text(
+                      'Masuk',
+                      style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
