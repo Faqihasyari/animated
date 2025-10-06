@@ -10,3 +10,9 @@ const gradient1 = Color(0xff9681EB);
 const gradient2 = Color(0xffBFB1F5);
 const gradient3 = Color(0xffD3CAF9);
 const gradient4 = Color(0xffC8C8C8);
+const gradient1Button = Color(0xff9880FF);
+const gradient2Button = Color(0xff876BF8);
+
+
+
+

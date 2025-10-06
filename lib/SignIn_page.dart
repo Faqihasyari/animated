@@ -70,32 +70,42 @@ class _SigninPageState extends State<SigninPage> {
           child: Center(
             child: Column(
               crossAxisAlignment:
-                  CrossAxisAlignment.center, // ⬅️ horizontal tengah
+                  CrossAxisAlignment.start, // ⬅️ horizontal tengah
               children: [
-                Image.asset('assets/SignIn.png', scale: 2),
-                Text(
-                  'Sign In',
-                  style: GoogleFonts.poppins(
-                    fontSize: 36,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
                 SizedBox(height: 5),
-                SizedBox(
-                  width: 270,
-                  height: 40,
-                  child: Text(
-                    'Masukkan email & password untuk mengakses akun kamu',
-                    style: TextStyle(color: subtitle),
-                    textAlign: TextAlign.center,
+                Center(
+                  child: SizedBox(
+                    width: 270,
+                    height: 320,
+                    child: Column(
+                      children: [
+                        Image.asset('assets/SignIn.png', scale: 2),
+
+                        Text(
+                          'Sign In',
+                          style: GoogleFonts.poppins(
+                            fontSize: 36,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          'Masukkan email & password untuk mengakses akun kamu',
+                          style: TextStyle(color: subtitle),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+                SizedBox(height: 15),
+                Text('Email Address'),
+                SizedBox(height: 5),
+
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
                     filled: true,
-                    labelText: 'Email',
-                    labelStyle: TextStyle(color: subtitle),
+                    hintText: 'Email',
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
                       fontSize: 12,
@@ -108,13 +118,15 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                SizedBox(height: 15),
+                Text('Password'),
+                SizedBox(height: 5),
+
                 TextField(
                   controller: passwordController,
                   decoration: InputDecoration(
                     filled: true,
-                    labelText: 'Password',
-                    labelStyle: TextStyle(color: subtitle),
+                    hintText: 'Password',
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
                       fontSize: 12,
@@ -126,14 +138,45 @@ class _SigninPageState extends State<SigninPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(minimumSize: double.infinity),
-                  onPressed: isLoading ? null : login,
-                  child: isLoading
-                      ? const CircularProgressIndicator(color: Colors.white)
-                      : const Text('Login'),
+                const SizedBox(height: 40),
+                Container(
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [gradient1Button, gradient2Button],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                    borderRadius: BorderRadius.circular(40),
+                  ),
+                  child: ElevatedButton(
+                    onPressed: isLoading ? null : login,
+
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.transparent, // transparan
+                      shadowColor: Colors.transparent, // hilangkan bayangan
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(40),
+                      ),
+                    ),
+                    child: isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : const Text('Masuk'),
+                  ),
                 ),
+                // SizedBox(
+                //   height: 50,
+                //   width: double.infinity,
+                //   child: ElevatedButton(
+                //     style: ElevatedButton.styleFrom(),
+                //     onPressed: isLoading ? null : login,
+                //     child: isLoading
+                //         ? const CircularProgressIndicator(color: Colors.white)
+                //         : const Text('Masuk'),
+                //   ),
+                // ),
               ],
             ),
           ),
