@@ -53,7 +53,6 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryColor,
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
