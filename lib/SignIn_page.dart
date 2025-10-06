@@ -191,17 +191,30 @@ class _SigninPageState extends State<SigninPage> {
                           ),
                   ),
                 ),
-                // SizedBox(
-                //   height: 50,
-                //   width: double.infinity,
-                //   child: ElevatedButton(
-                //     style: ElevatedButton.styleFrom(),
-                //     onPressed: isLoading ? null : login,
-                //     child: isLoading
-                //         ? const CircularProgressIndicator(color: Colors.white)
-                //         : const Text('Masuk'),
-                //   ),
-                // ),
+                SizedBox(height: 25),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Baru disini? Buat akun dulu'),
+                    SizedBox(width: 5),
+                    TextButton(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                        padding: EdgeInsets.zero, // 👈 hilangkan jarak default
+                        minimumSize: Size(0, 0), // optional: biar makin rapat
+                        tapTargetSize: MaterialTapTargetSize
+                            .shrinkWrap, // biar area klik pas
+                      ),
+                      child: Text(
+                        'Sign Up',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
