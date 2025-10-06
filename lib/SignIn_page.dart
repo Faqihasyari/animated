@@ -16,6 +16,7 @@ class SigninPage extends StatefulWidget {
 class _SigninPageState extends State<SigninPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool obscurePassword = true;
   bool isLoading = false;
 
   void login() async {
@@ -105,6 +106,10 @@ class _SigninPageState extends State<SigninPage> {
                   controller: emailController,
                   decoration: InputDecoration(
                     filled: true,
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.only(right: 14),
+                      child: Icon(Icons.email, color: icon),
+                    ),
                     hintText: 'Email',
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
@@ -124,8 +129,23 @@ class _SigninPageState extends State<SigninPage> {
 
                 TextField(
                   controller: passwordController,
+                  obscureText: obscurePassword,
                   decoration: InputDecoration(
                     filled: true,
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                        color: icon,
+                        icon: Icon(
+                          obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() => obscurePassword = !obscurePassword);
+                        },
+                      ),
+                    ),
                     hintText: 'Password',
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
@@ -163,7 +183,12 @@ class _SigninPageState extends State<SigninPage> {
                     ),
                     child: isLoading
                         ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text('Masuk'),
+                        : Text(
+                            'Masuk',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                   ),
                 ),
                 // SizedBox(
