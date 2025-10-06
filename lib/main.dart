@@ -6,6 +6,7 @@ import 'package:flutter_application_1/SignIn_page.dart';
 import 'package:flutter_application_1/api_essay.dart';
 import 'package:flutter_application_1/home_page.dart';
 import 'package:flutter_application_1/kuis_service.dart';
+import 'package:flutter_application_1/registe_page.dart';
 
 void main() {
   runApp(const MainApp());
@@ -16,7 +17,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: SigninPage(), debugShowCheckedModeBanner: false);
+    return MaterialApp(home: RegistePage(), debugShowCheckedModeBanner: false);
   }
 }
 
