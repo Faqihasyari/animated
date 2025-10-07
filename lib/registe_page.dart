@@ -10,6 +10,12 @@ class RegistePage extends StatefulWidget {
 }
 
 class _RegistePageState extends State<RegistePage> {
+  final passwordController = TextEditingController();
+  final passwordController2 = TextEditingController();
+
+  bool obscurePassword = true;
+  bool obscurePassword2 = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,25 +90,59 @@ class _RegistePageState extends State<RegistePage> {
                 Text('Password'),
                 SizedBox(height: 5),
                 TextField(
-                  // controller: passwordController,
-                  // obscureText: obscurePassword,
+                  controller: passwordController,
+                  obscureText: obscurePassword,
                   decoration: InputDecoration(
                     filled: true,
-                    // suffixIcon: Padding(
-                    //   padding: const EdgeInsets.only(right: 10),
-                    //   child: IconButton(
-                    //     color: icon,
-                    //     icon: Icon(
-                    //       obscurePassword
-                    //           ? Icons.visibility_off
-                    //           : Icons.visibility,
-                    //     ),
-                    //     onPressed: () {
-                    //       setState(() => obscurePassword = !obscurePassword);
-                    //     },
-                    //   ),
-                    // ),
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                        color: icon,
+                        icon: Icon(
+                          obscurePassword
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() => obscurePassword = !obscurePassword);
+                        },
+                      ),
+                    ),
                     hintText: 'Password',
+                    hintStyle: GoogleFonts.poppins(
+                      color: subtitle,
+                      fontSize: 12,
+                    ),
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+                Text('Confirm Password'),
+                SizedBox(height: 5),
+                TextField(
+                  controller: passwordController2,
+                  obscureText: obscurePassword2,
+                  decoration: InputDecoration(
+                    filled: true,
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: IconButton(
+                        color: icon,
+                        icon: Icon(
+                          obscurePassword2
+                              ? Icons.visibility_off
+                              : Icons.visibility,
+                        ),
+                        onPressed: () {
+                          setState(() => obscurePassword2 = !obscurePassword2);
+                        },
+                      ),
+                    ),
+                    hintText: 'Confirm Password',
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
                       fontSize: 12,
