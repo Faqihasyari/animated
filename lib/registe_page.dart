@@ -12,7 +12,7 @@ class RegistePage extends StatefulWidget {
 class _RegistePageState extends State<RegistePage> {
   final passwordController = TextEditingController();
   final passwordController2 = TextEditingController();
-
+  bool isChecked = false;
   bool obscurePassword = true;
   bool obscurePassword2 = true;
 
@@ -153,6 +153,37 @@ class _RegistePageState extends State<RegistePage> {
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
+                ),
+                Row(
+                  children: [
+                    Checkbox(
+                      value: isChecked,
+                      onChanged: (value) {
+                        setState(() {
+                          isChecked = value!;
+                        });
+                      },
+                    ),
+                    Text(
+                      'I agree to wimbo',
+                      style: GoogleFonts.poppins(fontSize: 11),
+                    ),
+                    SizedBox(width: 4),
+                    GestureDetector(
+                      onTap: () {
+                        // aksi saat teks "Wimbo" diklik
+                        print("Wimbo clicked!");
+                      },
+                      child: Text(
+                        'Public Agreement, Terms, & Privacy Police',
+                        style: GoogleFonts.poppins(
+                          fontSize: 11,
+                          color: Colors.purple,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 20),
                 Container(
