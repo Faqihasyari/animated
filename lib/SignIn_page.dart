@@ -172,7 +172,6 @@ class _SigninPageState extends State<SigninPage> {
                   ),
                   child: ElevatedButton(
                     onPressed: isLoading ? null : login,
-
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.transparent, // transparan

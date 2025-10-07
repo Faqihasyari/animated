@@ -141,7 +141,7 @@ class _RegistePageState extends State<RegistePage> {
                     //     ? const CircularProgressIndicator(color: Colors.white)
                     //     :
                     child: Text(
-                      'Masuk',
+                      'Buat Akun',
                       style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
                     ),
                   ),
