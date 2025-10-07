@@ -10,6 +10,8 @@ class RegistePage extends StatefulWidget {
 }
 
 class _RegistePageState extends State<RegistePage> {
+  final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
   final passwordController2 = TextEditingController();
   bool isChecked = false;
@@ -67,7 +69,7 @@ class _RegistePageState extends State<RegistePage> {
                 SizedBox(height: 5),
 
                 TextField(
-                  // controller: emailController,
+                  controller: emailController,
                   decoration: InputDecoration(
                     filled: true,
                     suffixIcon: Padding(
