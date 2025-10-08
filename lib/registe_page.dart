@@ -21,11 +21,30 @@ class _RegistePageState extends State<RegistePage> {
   bool obscurePassword = true;
   bool obscurePassword2 = true;
 
-  // void register() async {
-  //   setState(() => isLoading = true);
+  void register() async {
+    setState(() => isLoading = true);
 
-  //   final regist = await ApiService.register(name, email, password)
-  // }
+    final regist = await ApiService.register(
+      nameController.text.trim(),
+      emailController.text.trim(),
+      passwordController.text.trim(),
+    );
+
+    if (!mounted) return;
+    setState(() {
+      isLoading = false;
+    });
+
+    if (regist.statusCode == 200) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Anda Telah Berhasil Membuat Akun JDquizz')),
+      );
+    } else {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('message')));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
