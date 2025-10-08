@@ -30,6 +30,8 @@ class _RegistePageState extends State<RegistePage> {
         message:
             "Pastikan password dan konfirmasi password kamu sama sebelum melanjutkan.",
       );
+      setState(() => isLoading = false);
+
       return;
     }
 

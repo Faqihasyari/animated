@@ -3,10 +3,15 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  static const baseUrl = 'http://192.168.98.231:8000/api'; // ganti sesuai platform
+  static const baseUrl =
+      'http://192.168.98.231:8000/api'; // ganti sesuai platform
 
   // 🔹 Register
-  static Future<http.Response> register(String name, String email, String password) {
+  static Future<http.Response> register(
+    String name,
+    String email,
+    String password,
+  ) {
     return http.post(
       Uri.parse('$baseUrl/register'),
       headers: {'Content-Type': 'application/json'},
