@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
+import 'package:flutter_application_1/home_page.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/registe_page.dart';
 import 'package:flutter_application_1/services/api_service.dart';
@@ -41,7 +42,7 @@ class _SigninPageState extends State<SigninPage> {
       // 🔹 Ganti halaman, tidak bisa kembali ke login lagi
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MyQuiz()),
+        MaterialPageRoute(builder: (context) => const MyHomePage()),
       );
     } else {
       ScaffoldMessenger.of(
