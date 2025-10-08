@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
+import 'package:flutter_application_1/services/api_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistePage extends StatefulWidget {
@@ -11,12 +12,20 @@ class RegistePage extends StatefulWidget {
 
 class _RegistePageState extends State<RegistePage> {
   final emailController = TextEditingController();
+  final nameController = TextEditingController();
 
   final passwordController = TextEditingController();
   final passwordController2 = TextEditingController();
   bool isChecked = false;
+  bool isLoading = false;
   bool obscurePassword = true;
   bool obscurePassword2 = true;
+
+  // void register() async {
+  //   setState(() => isLoading = true);
+
+  //   final regist = await ApiService.register(name, email, password)
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +44,7 @@ class _RegistePageState extends State<RegistePage> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 40),
+          padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 80),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +65,7 @@ class _RegistePageState extends State<RegistePage> {
                         ),
                         SizedBox(height: 10),
                         Text(
-                          'Buat akun menggunakan email dan password',
+                          'Masukkan email dan kata sandi untuk membuat akun Anda',
                           style: TextStyle(color: subtitle),
                           textAlign: TextAlign.center,
                         ),
@@ -64,6 +73,32 @@ class _RegistePageState extends State<RegistePage> {
                     ),
                   ),
                 ),
+
+                SizedBox(height: 15),
+                Text('Username'),
+                SizedBox(height: 5),
+
+                TextField(
+                  controller: nameController,
+                  decoration: InputDecoration(
+                    filled: true,
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.only(right: 14),
+                      child: Icon(Icons.email, color: icon),
+                    ),
+                    hintText: 'Username',
+                    hintStyle: GoogleFonts.poppins(
+                      color: subtitle,
+                      fontSize: 12,
+                    ),
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                ),
+
                 SizedBox(height: 15),
                 Text('Email Address'),
                 SizedBox(height: 5),
