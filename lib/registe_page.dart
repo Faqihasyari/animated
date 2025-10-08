@@ -24,6 +24,15 @@ class _RegistePageState extends State<RegistePage> {
   void register() async {
     setState(() => isLoading = true);
 
+    if (passwordController.text != passwordController2.text) {
+      _showCenteredDialog(
+        title: "Password Tidak Sama",
+        message:
+            "Pastikan password dan konfirmasi password kamu sama sebelum melanjutkan.",
+      );
+      return;
+    }
+
     final regist = await ApiService.register(
       nameController.text.trim(),
       emailController.text.trim(),
@@ -44,6 +53,36 @@ class _RegistePageState extends State<RegistePage> {
         context,
       ).showSnackBar(SnackBar(content: Text('message')));
     }
+  }
+
+  void _showCenteredDialog({
+    required String title,
+    required String message,
+    VoidCallback? onConfirm,
+  }) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: Text(title, textAlign: TextAlign.center),
+        content: Text(message, textAlign: TextAlign.center),
+        actionsAlignment: MainAxisAlignment.center,
+        actions: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+              if (onConfirm != null) onConfirm();
+            },
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            child: const Text("OK"),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -179,7 +218,16 @@ class _RegistePageState extends State<RegistePage> {
                 SizedBox(height: 15),
                 Text('Confirm Password'),
                 SizedBox(height: 5),
-                TextField(
+                TextFormField(
+                  validator: (v) {
+                    if (v == null || v.isEmpty) {
+                      return 'Konfirmasi password wajib diisi';
+                    }
+                    if (v != passwordController.text) {
+                      return 'Password tidak sama!';
+                    }
+                    return null;
+                  },
                   controller: passwordController2,
                   obscureText: obscurePassword2,
                   decoration: InputDecoration(
@@ -198,11 +246,13 @@ class _RegistePageState extends State<RegistePage> {
                         },
                       ),
                     ),
+
                     hintText: 'Confirm Password',
                     hintStyle: GoogleFonts.poppins(
                       color: subtitle,
                       fontSize: 12,
                     ),
+
                     fillColor: Colors.white,
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
@@ -210,6 +260,7 @@ class _RegistePageState extends State<RegistePage> {
                     ),
                   ),
                 ),
+
                 Row(
                   children: [
                     Checkbox(
@@ -254,7 +305,7 @@ class _RegistePageState extends State<RegistePage> {
                     borderRadius: BorderRadius.circular(40),
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: isLoading ? null : register,
 
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.white,
@@ -264,13 +315,14 @@ class _RegistePageState extends State<RegistePage> {
                         borderRadius: BorderRadius.circular(40),
                       ),
                     ),
-                    // child: isLoading
-                    //     ? const CircularProgressIndicator(color: Colors.white)
-                    //     :
-                    child: Text(
-                      'Buat Akun',
-                      style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
-                    ),
+                    child: isLoading
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : Text(
+                            'Buat Akun',
+                            style: GoogleFonts.poppins(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                   ),
                 ),
               ],
