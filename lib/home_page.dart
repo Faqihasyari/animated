@@ -35,15 +35,14 @@ class _MyHomePageState extends State<MyHomePage> {
         decoration: const BoxDecoration(
           gradient: RadialGradient(
             colors: [
-              gradient1, // warna atas
-              gradient2, // warna bawah
-              gradient3,
-              gradient4,
+              radialGradient, // warna atas
+              radialGradient2, // warna bawah
+              radialGradient3,
+              radialGradient4,
             ],
             center: Alignment.center, // posisi pusat gradient
-            radius: 0.8, // semakin besar nilainya, semakin luas gradient-nya
+            radius: 1.7, // semakin besar nilainya, semakin luas gradient-nya
             focal: Alignment.center, // titik fokus (opsional)
-            focalRadius: 0.1, // seberapa kuat efek fokus (opsional)
           ),
         ),
         child: Padding(
