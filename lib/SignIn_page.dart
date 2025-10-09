@@ -36,14 +36,15 @@ class _SigninPageState extends State<SigninPage> {
     final data = jsonDecode(res.body);
 
     if (res.statusCode == 200) {
-       // 🔹 Ambil nama user dari response
-    final userName = data['user']['name'];
+      // 🔹 Ambil nama user dari response
+      final userName = data['user']['name'];
 
-    // 🔹 Simpan ke SharedPreferences
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('user_name', userName);
+      // 🔹 Simpan ke SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('user_name', userName);
 
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(const SnackBar(content: Text("Login berhasil!")));
 
