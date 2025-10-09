@@ -18,7 +18,6 @@ class MainApp extends StatelessWidget {
   }
 }
 
-//ini buat kodingan splash scrennya
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
