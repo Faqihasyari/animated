@@ -197,91 +197,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               SizedBox(height: 10),
-              
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: [
-              //     Column(
-              //       spacing: 5,
-
-              //       children: [
-              //         Container(
-              //           height: 80,
-              //           width: 80,
-              //           decoration: BoxDecoration(
-              //             color: containerQuiz.withOpacity(0.6),
-              //             border: Border.all(color: Colors.white, width: 0.5),
-              //             borderRadius: BorderRadius.circular(8),
-              //           ),
-              //         ),
-              //         Text('Football'),
-              //       ],
-              //     ),
-              //     Column(
-              //       spacing: 5,
-
-              //       children: [
-              //         Container(
-              //           height: 80,
-              //           width: 80,
-              //           decoration: BoxDecoration(
-              //             color: containerQuiz.withOpacity(0.6),
-              //             border: Border.all(color: Colors.white, width: 0.5),
-              //             borderRadius: BorderRadius.circular(8),
-              //           ),
-              //         ),
-              //         Text('Science'),
-              //       ],
-              //     ),
-              //     Column(
-              //       spacing: 5,
-
-              //       children: [
-              //         Container(
-              //           height: 80,
-              //           width: 80,
-              //           decoration: BoxDecoration(
-              //             color: containerQuiz.withOpacity(0.6),
-              //             border: Border.all(color: Colors.white, width: 0.5),
-              //             borderRadius: BorderRadius.circular(8),
-              //           ),
-              //         ),
-              //         Text('Fashion'),
-              //       ],
-              //     ),
-              //     Column(
-              //       spacing: 5,
-
-              //       children: [
-              //         Container(
-              //           height: 80,
-              //           width: 80,
-              //           decoration: BoxDecoration(
-              //             color: containerQuiz.withOpacity(0.6),
-              //             border: Border.all(color: Colors.white, width: 0.5),
-              //             borderRadius: BorderRadius.circular(8),
-              //           ),
-              //         ),
-              //         Text('Movie'),
-              //       ],
-              //     ),
-              //     Column(
-              //       spacing: 5,
-              //       children: [
-              //         Container(
-              //           height: 80,
-              //           width: 80,
-              //           decoration: BoxDecoration(
-              //             color: containerQuiz.withOpacity(0.6),
-              //             border: Border.all(color: Colors.white, width: 0.5),
-              //             borderRadius: BorderRadius.circular(8),
-              //           ),
-              //         ),
-              //         Text('Music'),
-              //       ],
-              //     ),
-              //   ],
-              // ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                  nameList.length,
+                  (index) => Column(
+                    children: [
+                      Container(
+                        height: 80,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          color: containerQuiz.withOpacity(0.6),
+                          border: Border.all(color: Colors.white, width: 0.5),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(nameList[index]),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
