@@ -12,6 +12,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String userName = '';
+  var nameList = ['Football', 'Science', 'Fashion', 'Movie', 'Music'];
 
   @override
   void initState() {
@@ -48,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 26),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -174,6 +176,112 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
+              SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Quiz',
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    'View All',
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 10),
+              
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: [
+              //     Column(
+              //       spacing: 5,
+
+              //       children: [
+              //         Container(
+              //           height: 80,
+              //           width: 80,
+              //           decoration: BoxDecoration(
+              //             color: containerQuiz.withOpacity(0.6),
+              //             border: Border.all(color: Colors.white, width: 0.5),
+              //             borderRadius: BorderRadius.circular(8),
+              //           ),
+              //         ),
+              //         Text('Football'),
+              //       ],
+              //     ),
+              //     Column(
+              //       spacing: 5,
+
+              //       children: [
+              //         Container(
+              //           height: 80,
+              //           width: 80,
+              //           decoration: BoxDecoration(
+              //             color: containerQuiz.withOpacity(0.6),
+              //             border: Border.all(color: Colors.white, width: 0.5),
+              //             borderRadius: BorderRadius.circular(8),
+              //           ),
+              //         ),
+              //         Text('Science'),
+              //       ],
+              //     ),
+              //     Column(
+              //       spacing: 5,
+
+              //       children: [
+              //         Container(
+              //           height: 80,
+              //           width: 80,
+              //           decoration: BoxDecoration(
+              //             color: containerQuiz.withOpacity(0.6),
+              //             border: Border.all(color: Colors.white, width: 0.5),
+              //             borderRadius: BorderRadius.circular(8),
+              //           ),
+              //         ),
+              //         Text('Fashion'),
+              //       ],
+              //     ),
+              //     Column(
+              //       spacing: 5,
+
+              //       children: [
+              //         Container(
+              //           height: 80,
+              //           width: 80,
+              //           decoration: BoxDecoration(
+              //             color: containerQuiz.withOpacity(0.6),
+              //             border: Border.all(color: Colors.white, width: 0.5),
+              //             borderRadius: BorderRadius.circular(8),
+              //           ),
+              //         ),
+              //         Text('Movie'),
+              //       ],
+              //     ),
+              //     Column(
+              //       spacing: 5,
+              //       children: [
+              //         Container(
+              //           height: 80,
+              //           width: 80,
+              //           decoration: BoxDecoration(
+              //             color: containerQuiz.withOpacity(0.6),
+              //             border: Border.all(color: Colors.white, width: 0.5),
+              //             borderRadius: BorderRadius.circular(8),
+              //           ),
+              //         ),
+              //         Text('Music'),
+              //       ],
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

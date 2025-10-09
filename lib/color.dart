@@ -15,3 +15,4 @@ const radialGradient = Color(0xff8A6FFC);
 const radialGradient2 = Color(0xff9986E6);
 const radialGradient3 = Color(0xffD2CAF8);
 const radialGradient4 = Color(0xffE8E3FE);
+const containerQuiz = Color(0xffC8B8FF);
