@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -26,6 +29,32 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     _loadUserName();
   }
+
+  Future<void> submitAnswer(bool isCorrect) async {
+  final prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString('token');
+
+  if (token == null) {
+    print('Token belum ada, user belum login');
+    return;
+  }
+
+  final response = await http.post(
+    Uri.parse('http://localhost:8000/api/quizzes/submit'),
+    headers: {
+      'Authorization': 'Bearer $token',
+      'Content-Type': 'application/json',
+    },
+    body: jsonEncode({'is_correct': isCorrect}),
+  );
+
+  if (response.statusCode == 200) {
+    final data = jsonDecode(response.body);
+    print('Rank kamu sekarang: ${data['rank']}');
+  } else {
+    print('Gagal kirim jawaban: ${response.body}');
+  }
+}
 
   Future<void> _loadUserName() async {
     final prefs = await SharedPreferences.getInstance();
@@ -223,7 +252,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Text(nameList[index]),
+                      Text(
+                        nameList[index],
+                        style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ],
                   ),
                 ),
