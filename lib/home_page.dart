@@ -13,6 +13,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   String userName = '';
   var nameList = ['Football', 'Science', 'Fashion', 'Movie', 'Music'];
+  var assetList = [
+    'assets/Football.png',
+    'assets/Science.png',
+    'assets/Fashion.png',
+    'assets/Movie.png',
+    'assets/music.png',
+  ];
 
   @override
   void initState() {
@@ -210,6 +217,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: containerQuiz.withOpacity(0.6),
                           border: Border.all(color: Colors.white, width: 0.5),
                           borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Center(
+                          child: Image.asset(assetList[index], scale: 2.5),
                         ),
                       ),
                       SizedBox(height: 5),
