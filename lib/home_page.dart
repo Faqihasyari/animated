@@ -14,6 +14,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String userRank = '';
   String userName = '';
   var nameList = ['Football', 'Science', 'Fashion', 'Movie', 'Music'];
   var assetList = [
@@ -31,35 +32,45 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> submitAnswer(bool isCorrect) async {
-  final prefs = await SharedPreferences.getInstance();
-  final token = prefs.getString('token');
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token');
 
-  if (token == null) {
-    print('Token belum ada, user belum login');
-    return;
+    if (token == null) {
+      print('Token belum ada, user belum login');
+      return;
+    }
+
+    final response = await http.post(
+      Uri.parse('http://localhost:8000/api/quizzes/submit'),
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode({'is_correct': isCorrect}),
+    );
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      print('Rank kamu sekarang: ${data['rank']}');
+
+      // Simpan rank terbaru
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('user_rank', data['rank']);
+
+      // Update tampilan
+      setState(() {
+        userRank = data['rank'];
+      });
+    } else {
+      print('Gagal kirim jawaban: ${response.body}');
+    }
   }
-
-  final response = await http.post(
-    Uri.parse('http://localhost:8000/api/quizzes/submit'),
-    headers: {
-      'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
-    },
-    body: jsonEncode({'is_correct': isCorrect}),
-  );
-
-  if (response.statusCode == 200) {
-    final data = jsonDecode(response.body);
-    print('Rank kamu sekarang: ${data['rank']}');
-  } else {
-    print('Gagal kirim jawaban: ${response.body}');
-  }
-}
 
   Future<void> _loadUserName() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       userName = prefs.getString('user_name') ?? '';
+      userRank = prefs.getString('user_rank') ?? 'Beginner';
     });
   }
 
@@ -128,7 +139,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Color(0xffD9D9D9).withOpacity(0.5),
                         ),
                         child: Center(
-                          child: Text('Role', style: TextStyle(fontSize: 12)),
+                          child: Text(
+                            userRank.isNotEmpty ? userRank : 'Beginner',
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.black,
+                            ),
+                          ),
                         ),
                       ),
                     ],
