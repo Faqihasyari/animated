@@ -5,3 +5,16 @@ It allows users to test their knowledge across various categories such as Scienc
 The app provides instant feedback, tracks progress, and ranks players based on their performance.
 
 ---
+
+
+## 🚀 Features
+
+- 🧠 Multiple quiz categories (Football, Science, Fashion, Movies, Music)
+- 🔢 Score and ranking system
+- 🌟 Difficulty levels (Beginner, Intermediate, Expert)
+- 💾 Local data storage with SharedPreferences
+- 🎨 Modern UI with custom colors and Google Fonts
+- ⚡ Fast and responsive experience
+- 🌐 API integration for dynamic quiz data *(optional if you use an API)*
+
+---
