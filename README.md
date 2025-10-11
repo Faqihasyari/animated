@@ -15,6 +15,18 @@ The app provides instant feedback, tracks progress, and ranks players based on t
 - 💾 Local data storage with SharedPreferences
 - 🎨 Modern UI with custom colors and Google Fonts
 - ⚡ Fast and responsive experience
-- 🌐 API integration for dynamic quiz data *(optional if you use an API)*
+- 🌐 API integration for dynamic quiz data
+
+---
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** Flutter  
+- **Language:** Dart  
+- **Storage:** SharedPreferences  
+- **Fonts:** Google Fonts  
+- **API Requests:** HTTP package  
 
 ---
