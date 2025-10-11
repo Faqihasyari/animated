@@ -128,8 +128,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       Container(
-                        width: 55,
-                        height: 25,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
                         decoration: BoxDecoration(
                           border: BoxBorder.all(
                             color: Colors.white,
