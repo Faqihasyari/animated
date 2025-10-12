@@ -24,7 +24,7 @@ class _QuizpageState extends State<Quizpage> {
 
   Future<void> fetchQuizzes() async {
     final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token'); // 🔹 Ambil token dari local storage
+    final token = prefs.getString('token');
 
     if (token == null) {
       print("Token belum ada, user belum login.");
@@ -33,15 +33,17 @@ class _QuizpageState extends State<Quizpage> {
 
     final response = await http.get(
       Uri.parse(
-        'http://localhost:8000/api/quizzes?category=${widget.categoryName}',
+        'http://192.168.120.231:8000/api/quizzes?category=${widget.categoryName}',
       ),
       headers: {'Authorization': 'Bearer $token'},
     );
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
+      print("Response for ${widget.categoryName}: $data");
+
       setState(() {
-        quizzes = data;
+        quizzes = data; // langsung list
       });
     } else {
       print("Gagal mengambil quiz: ${response.body}");
@@ -55,12 +57,35 @@ class _QuizpageState extends State<Quizpage> {
       body: quizzes.isEmpty
           ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
-              itemCount: quizzes.length,
+              itemCount: quizzes[0]['questions'].length,
               itemBuilder: (context, index) {
-                final quiz = quizzes[index];
-                return ListTile(
-                  title: Text(quiz['title']),
-                  subtitle: Text(quiz['description'] ?? ''),
+                final question = quizzes[0]['questions'][index];
+                final answers = question['answers'] as List;
+
+                return Card(
+                  margin: const EdgeInsets.all(8),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${index + 1}. ${question['question_text']}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        ...answers.map(
+                          (ans) => ListTile(
+                            title: Text(ans['answer_text']),
+                            leading: const Icon(Icons.circle_outlined),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),
