@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 class Quizpage extends StatefulWidget {
-  const Quizpage({super.key});
+   final String categoryName;
+  const Quizpage({super.key, required this.categoryName});
 
   @override
   State<Quizpage> createState() => _QuizpageState();

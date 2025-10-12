@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
+import 'package:flutter_application_1/quizpage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -258,16 +259,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   nameList.length,
                   (index) => Column(
                     children: [
-                      Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          color: containerQuiz.withOpacity(0.6),
-                          border: Border.all(color: Colors.white, width: 0.5),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Center(
-                          child: Image.asset(assetList[index], scale: 2.5),
+                      GestureDetector(
+                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Quizpage(categoryName: nameList[index],),)),
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            color: containerQuiz.withOpacity(0.6),
+                            border: Border.all(color: Colors.white, width: 0.5),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                            child: Image.asset(assetList[index], scale: 2.5),
+                          ),
                         ),
                       ),
                       SizedBox(height: 5),
