@@ -9,7 +9,7 @@ The app provides instant feedback, tracks progress, and ranks players based on t
 
 ## 🚀 Features
 
-- 🧠 Multiple quiz categories (Football, Science, Fashion, Movies, Music)
+- 🧠 Multiple quiz categories (Football, Science, Fashion, Movies, Music, Technology, and Geography.)
 - 🔢 Score and ranking system
 - 🌟 Difficulty levels (Beginner, Intermediate, Expert)
 - 💾 Local data storage with SharedPreferences
