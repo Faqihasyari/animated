@@ -86,6 +86,25 @@ class _QuizpageState extends State<Quizpage> {
 
   @override
   Widget build(BuildContext context) {
+    // 🔹 Cek apakah data belum siap
+    if (quizzes.isEmpty) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+
+    // 🔹 Cek apakah tidak ada pertanyaan dalam quiz
+    if (quizzes[0]['questions'] == null ||
+        (quizzes[0]['questions'] as List).isEmpty) {
+      return Scaffold(
+        body: Center(
+          child: Text(
+            'Tidak ada pertanyaan di kategori ${widget.categoryName}',
+            style: const TextStyle(fontSize: 18, color: Colors.white),
+          ),
+        ),
+        backgroundColor: Colors.deepPurple,
+      );
+    }
+
     final currentQuestion = quizzes[0]['questions'][currentQuestionIndex];
     final answers = currentQuestion['answers'] as List;
     return Scaffold(
@@ -135,6 +154,7 @@ class _QuizpageState extends State<Quizpage> {
                             child: Text(
                               currentQuestion['question_text'],
                               style: const TextStyle(
+                                color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
