@@ -16,6 +16,8 @@ class Quizpage extends StatefulWidget {
 
 class _QuizpageState extends State<Quizpage> {
   List quizzes = [];
+  int currentQuestionIndex = 0; // 🔹 buat melacak pertanyaan aktif
+  int? selectedAnswerIndex; // 🔹 simpan jawaban user
 
   @override
   void initState() {
@@ -68,8 +70,24 @@ class _QuizpageState extends State<Quizpage> {
     }
   }
 
+  void nextQuestion() {
+    if (currentQuestionIndex < quizzes[0]['questions'].length - 1) {
+      setState(() {
+        currentQuestionIndex++;
+        selectedAnswerIndex = null; // reset pilihan
+      });
+    } else {
+      // Sudah pertanyaan terakhir
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Kuis selesai! 🎉")));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final currentQuestion = quizzes[0]['questions'][currentQuestionIndex];
+    final answers = currentQuestion['answers'] as List;
     return Scaffold(
       // appBar: AppBar(title: Text('${widget.categoryName} Quiz')),
       body: Container(
@@ -89,13 +107,44 @@ class _QuizpageState extends State<Quizpage> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 850,
-                width: double.infinity,
-                color: Colors.amberAccent,
+              Stack(
+                children: [
+                  Container(
+                    height: 850,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 300,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            color: Colors.black,
+                          ),
+                          child: Center(
+                            child: Text(
+                              currentQuestion['question_text'],
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
