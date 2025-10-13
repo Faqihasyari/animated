@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/color.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -70,42 +71,71 @@ class _QuizpageState extends State<Quizpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('${widget.categoryName} Quiz')),
-      body: quizzes.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: quizzes[0]['questions'].length,
-              itemBuilder: (context, index) {
-                final question = quizzes[0]['questions'][index];
-                final answers = question['answers'] as List;
+      // appBar: AppBar(title: Text('${widget.categoryName} Quiz')),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: RadialGradient(
+            colors: [
+              radialGradient, // warna atas
+              radialGradient2, // warna bawah
+              radialGradient3,
+              radialGradient4,
+            ],
+            center: Alignment.center, // posisi pusat gradient
+            radius: 1.7, // semakin besar nilainya, semakin luas gradient-nya
+            focal: Alignment.center, // titik fokus (opsional)
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+          child: Column(
+            children: [
+              Container(
+                height: 850,
+                width: double.infinity,
+                color: Colors.amberAccent,
+              ),
+            ],
+          ),
+        ),
+      ),
+      // body: quizzes.isEmpty
+      //     ? const Center(child: CircularProgressIndicator())
+      //     : ListView.builder(
+      //         itemCount: quizzes[0]['questions'].length,
+      //         itemBuilder: (context, index) {
+      //           final question = quizzes[0]['questions'][index];
+      //           final answers = question['answers'] as List;
 
-                return Card(
-                  margin: const EdgeInsets.all(8),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '${index + 1}. ${question['question_text']}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        ...answers.map(
-                          (ans) => ListTile(
-                            title: Text(ans['answer_text']),
-                            leading: const Icon(Icons.circle_outlined),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
+      //           return Card(
+      //             margin: const EdgeInsets.all(8),
+      //             child: Padding(
+      //               padding: const EdgeInsets.all(12),
+      //               child: Column(
+      //                 crossAxisAlignment: CrossAxisAlignment.start,
+      //                 children: [
+      //                   Text(
+      //                     '${index + 1}. ${question['question_text']}',
+      //                     style: const TextStyle(
+      //                       fontSize: 16,
+      //                       fontWeight: FontWeight.bold,
+      //                     ),
+      //                   ),
+      //                   const SizedBox(height: 8),
+      //                   ...answers.map(
+      //                     (ans) => ListTile(
+      //                       title: Text(ans['answer_text']),
+      //                       leading: const Icon(Icons.circle_outlined),
+      //                     ),
+      //                   ),
+      //                 ],
+      //               ),
+      //             ),
+      //           );
+      //         },
+      //       ),
     );
   }
 }

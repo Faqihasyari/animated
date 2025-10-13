@@ -260,7 +260,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   (index) => Column(
                     children: [
                       GestureDetector(
-                        onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Quizpage(categoryName: nameList[index],),)),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Quizpage(categoryName: nameList[index]),
+                          ),
+                        ),
                         child: Container(
                           height: 80,
                           width: 80,
@@ -307,7 +313,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              
             ],
           ),
         ),
