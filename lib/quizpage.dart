@@ -31,9 +31,26 @@ class _QuizpageState extends State<Quizpage> {
       return;
     }
 
+    // 🔹 Mapping antara kategori di Flutter dan nama di database Laravel
+    Map<String, String> categoryMap = {
+      'Football': 'Olahraga',
+      'Science': 'Science',
+      'Fashion': 'Fashion',
+      'Movie': 'Film',
+      'Music': 'Musik',
+      'Geography': 'Geography',
+      'Technology': 'Technology',
+    };
+
+    // 🔹 Konversi nama kategori Flutter ke nama di database
+    String categoryToSend =
+        categoryMap[widget.categoryName] ?? widget.categoryName;
+
+    print("Kirim request untuk kategori: $categoryToSend");
+
     final response = await http.get(
       Uri.parse(
-        'http://192.168.120.231:8000/api/quizzes?category=${widget.categoryName}',
+        'http://192.168.120.231:8000/api/quizzes?category=$categoryToSend',
       ),
       headers: {'Authorization': 'Bearer $token'},
     );
@@ -43,7 +60,7 @@ class _QuizpageState extends State<Quizpage> {
       print("Response for ${widget.categoryName}: $data");
 
       setState(() {
-        quizzes = data; // langsung list
+        quizzes = data;
       });
     } else {
       print("Gagal mengambil quiz: ${response.body}");
