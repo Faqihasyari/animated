@@ -1,6 +1,6 @@
 # 🎯 JDquizz — Interactive Quiz App
 
-JDquizz is a fun and interactive mobile quiz application built with **Flutter**.  
+JDquizz is a fun and interactive mobile quiz application built with **Flutter and Laravel**.  
 It allows users to test their knowledge across various categories such as Science, Sports, Movies, Fashion, Music, Technology, and Geography.  
 The app provides instant feedback, tracks progress, and ranks players based on their performance.
 
@@ -23,7 +23,7 @@ The app provides instant feedback, tracks progress, and ranks players based on t
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Flutter  
+- **Framework:** Flutter, Laravel 
 - **Language:** Dart  
 - **Storage:** SharedPreferences  
 - **Fonts:** Google Fonts  
