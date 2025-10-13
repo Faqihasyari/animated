@@ -139,29 +139,48 @@ class _QuizpageState extends State<Quizpage> {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 300,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(18),
-                            color: Colors.black,
-                          ),
-                          child: Center(
-                            child: Text(
-                              currentQuestion['question_text'],
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 300,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(18),
+                                color: Colors.black,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  currentQuestion['question_text'],
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
+                        ...answers.asMap().entries.map((entry) {
+                          final index = entry.key;
+                          final answer = entry.value;
+
+                          return RadioListTile<int>(
+                            title: Text(answer['answer_text']),
+                            value: index,
+                            groupValue: selectedAnswerIndex,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedAnswerIndex = value;
+                              });
+                            },
+                          );
+                        }).toList(),
+                      ],
                     ),
                   ),
                 ],
