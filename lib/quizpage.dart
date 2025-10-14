@@ -180,15 +180,84 @@ class _QuizpageState extends State<Quizpage> {
                           final index = entry.key;
                           final answer = entry.value;
 
-                          return RadioListTile<int>(
-                            title: Text(answer['answer_text']),
-                            value: index,
-                            groupValue: selectedAnswerIndex,
-                            onChanged: (value) {
+                          // Huruf A, B, C, D
+                          final optionLetter = String.fromCharCode(65 + index);
+
+                          final bool isSelected = selectedAnswerIndex == index;
+
+                          return GestureDetector(
+                            onTap: () {
                               setState(() {
-                                selectedAnswerIndex = value;
+                                selectedAnswerIndex = index;
                               });
                             },
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 6,
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 14,
+                              ),
+                              decoration: BoxDecoration(
+                                color: isSelected
+                                    ? const Color(0xFFC8FCEA)
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: isSelected
+                                      ? Colors.green
+                                      : Colors.grey.shade300,
+                                  width: 1.5,
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.1),
+                                    blurRadius: 5,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  // 🔹 Huruf (A, B, C, D)
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Text(
+                                      optionLetter,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ),
+
+                                  const SizedBox(width: 10),
+
+                                  // 🔹 Teks jawaban
+                                  Expanded(
+                                    child: Text(
+                                      answer['answer_text'],
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                  ),
+
+                                  // 🔹 Ikon centang ketika dipilih
+                                  if (isSelected)
+                                    const Icon(
+                                      Icons.check_circle,
+                                      color: Colors.green,
+                                    ),
+                                ],
+                              ),
+                            ),
                           );
                         }).toList(),
                         ElevatedButton(
