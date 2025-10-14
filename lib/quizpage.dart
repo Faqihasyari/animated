@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -126,10 +127,39 @@ class _QuizpageState extends State<Quizpage> {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+          padding: EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.all(20),
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                    child: Icon(Icons.arrow_back),
+                  ),
+                  Text(
+                    'Question ${currentQuestionIndex + 1} of ${quizzes[0]['questions'].length}',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(),
+                      padding: EdgeInsets.all(20),
+                    ),
+                    onPressed: () {},
+                    child: Icon(Icons.bookmark),
+                  ),
+                ],
+              ),
+              SizedBox(height: 30),
               Stack(
                 children: [
                   Container(
@@ -141,13 +171,6 @@ class _QuizpageState extends State<Quizpage> {
                     ),
                     child: Column(
                       children: [
-                        Text(
-                          'Question ${currentQuestionIndex + 1} of ${quizzes[0]['questions'].length}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
                         Align(
                           alignment: Alignment.topCenter,
                           child: Padding(
