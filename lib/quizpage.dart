@@ -191,6 +191,22 @@ class _QuizpageState extends State<Quizpage> {
                             },
                           );
                         }).toList(),
+                        ElevatedButton(
+                          onPressed: selectedAnswerIndex == null
+                              ? null
+                              : nextQuestion,
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: const Size(double.infinity, 50),
+                            backgroundColor: Colors.deepPurple,
+                          ),
+                          child: Text(
+                            currentQuestionIndex ==
+                                    quizzes[0]['questions'].length - 1
+                                ? 'Finish'
+                                : 'Next',
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        ),
                       ],
                     ),
                   ),
