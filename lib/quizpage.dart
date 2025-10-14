@@ -141,6 +141,13 @@ class _QuizpageState extends State<Quizpage> {
                     ),
                     child: Column(
                       children: [
+                        Text(
+                          'Question ${currentQuestionIndex + 1} of ${quizzes[0]['questions'].length}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                         Align(
                           alignment: Alignment.topCenter,
                           child: Padding(
@@ -153,12 +160,16 @@ class _QuizpageState extends State<Quizpage> {
                                 color: Colors.black,
                               ),
                               child: Center(
-                                child: Text(
-                                  currentQuestion['question_text'],
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
+                                child: SizedBox(
+                                  width: 300,
+                                  child: Text(
+                                    currentQuestion['question_text'],
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ),
