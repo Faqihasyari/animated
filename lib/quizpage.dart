@@ -199,6 +199,7 @@ class _QuizpageState extends State<Quizpage> {
                             ),
                           ),
                         ),
+                        SizedBox(height: 10),
                         ...answers.asMap().entries.map((entry) {
                           final index = entry.key;
                           final answer = entry.value;
@@ -287,10 +288,15 @@ class _QuizpageState extends State<Quizpage> {
                           onPressed: selectedAnswerIndex == null
                               ? null
                               : nextQuestion,
+
                           style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(double.infinity, 50),
+                            minimumSize: const Size(50, 50),
                             backgroundColor: Colors.deepPurple,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
+
                           child: Text(
                             currentQuestionIndex ==
                                     quizzes[0]['questions'].length - 1
@@ -308,41 +314,6 @@ class _QuizpageState extends State<Quizpage> {
           ),
         ),
       ),
-      // body: quizzes.isEmpty
-      //     ? const Center(child: CircularProgressIndicator())
-      //     : ListView.builder(
-      //         itemCount: quizzes[0]['questions'].length,
-      //         itemBuilder: (context, index) {
-      //           final question = quizzes[0]['questions'][index];
-      //           final answers = question['answers'] as List;
-
-      //           return Card(
-      //             margin: const EdgeInsets.all(8),
-      //             child: Padding(
-      //               padding: const EdgeInsets.all(12),
-      //               child: Column(
-      //                 crossAxisAlignment: CrossAxisAlignment.start,
-      //                 children: [
-      //                   Text(
-      //                     '${index + 1}. ${question['question_text']}',
-      //                     style: const TextStyle(
-      //                       fontSize: 16,
-      //                       fontWeight: FontWeight.bold,
-      //                     ),
-      //                   ),
-      //                   const SizedBox(height: 8),
-      //                   ...answers.map(
-      //                     (ans) => ListTile(
-      //                       title: Text(ans['answer_text']),
-      //                       leading: const Icon(Icons.circle_outlined),
-      //                     ),
-      //                   ),
-      //                 ],
-      //               ),
-      //             ),
-      //           );
-      //         },
-      //       ),
     );
   }
 }
