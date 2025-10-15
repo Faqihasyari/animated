@@ -54,13 +54,18 @@ class Resultpage extends StatelessWidget {
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 30,
+                  horizontal: 20,
+                ),
                 child: Column(
                   children: [
                     // Foto profil
                     CircleAvatar(
                       radius: 40,
-                      backgroundImage: AssetImage('assets/container1.png'), // ganti sesuai aset kamu
+                      backgroundImage: AssetImage(
+                        'assets/container1.png',
+                      ), // ganti sesuai aset kamu
                     ),
                     const SizedBox(height: 16),
                     Text(
@@ -95,7 +100,7 @@ class Resultpage extends StatelessWidget {
 
               // Teks ucapan
               Text(
-                "Congratulations, you've completed this quiz!",
+                "Selamat! Kamu telah menyelesaikan kuis ini!",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                   fontSize: 16,
@@ -105,7 +110,7 @@ class Resultpage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text(
-                "Let's keep testing your knowledge by playing more quizzes!",
+                "Ayo terus uji pengetahuanmu dengan memainkan lebih banyak kuis!",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                   fontSize: 13,
