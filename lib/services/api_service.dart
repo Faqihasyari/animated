@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
   static const baseUrl =
-      'http://192.168.120.231:8000/api'; // ganti sesuai platform
+      'http://192.168.217.231:8000/api'; // ganti sesuai platform
 
   // 🔹 Register
   static Future<http.Response> register(

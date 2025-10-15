@@ -54,7 +54,7 @@ class _QuizpageState extends State<Quizpage> {
 
     final response = await http.get(
       Uri.parse(
-        'http://192.168.120.231:8000/api/quizzes?category=$categoryToSend',
+        'http://192.168.217.231:8000/api/quizzes?category=$categoryToSend',
       ),
       headers: {'Authorization': 'Bearer $token'},
     );
