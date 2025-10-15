@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
+import 'package:flutter_application_1/resultPage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,6 +18,7 @@ class Quizpage extends StatefulWidget {
 
 class _QuizpageState extends State<Quizpage> {
   List quizzes = [];
+  List<int?> selectedAnswers = [];
   int currentQuestionIndex = 0; // 🔹 buat melacak pertanyaan aktif
   int? selectedAnswerIndex; // 🔹 simpan jawaban user
 
@@ -58,6 +60,8 @@ class _QuizpageState extends State<Quizpage> {
       ),
       headers: {'Authorization': 'Bearer $token'},
     );
+    print('Quiz Response Status: ${response.statusCode}');
+    print('Quiz Response Body: ${response.body}');
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
@@ -71,17 +75,74 @@ class _QuizpageState extends State<Quizpage> {
     }
   }
 
-  void nextQuestion() {
+  void nextQuestion() async {
+    // ✅ Simpan jawaban yang dipilih lebih dulu
+    if (selectedAnswers.length <= currentQuestionIndex) {
+      selectedAnswers.add(selectedAnswerIndex);
+    } else {
+      selectedAnswers[currentQuestionIndex] = selectedAnswerIndex;
+    }
+
+    // Jika masih ada pertanyaan berikutnya
     if (currentQuestionIndex < quizzes[0]['questions'].length - 1) {
       setState(() {
         currentQuestionIndex++;
-        selectedAnswerIndex = null; // reset pilihan
+        // ✅ Reset jawaban hanya setelah berpindah pertanyaan
+        selectedAnswerIndex = selectedAnswers.length > currentQuestionIndex
+            ? selectedAnswers[currentQuestionIndex]
+            : null;
       });
     } else {
-      // Sudah pertanyaan terakhir
-      ScaffoldMessenger.of(
+      // Sudah selesai semua soal
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+      final userName = prefs.getString('user_name') ?? 'User';
+
+      int correctCount = 0;
+      for (int i = 0; i < quizzes[0]['questions'].length; i++) {
+        final answers = quizzes[0]['questions'][i]['answers'];
+
+        // cari index jawaban yang benar dari is_correct = 1
+        final correctIndex = answers.indexWhere((a) => a['is_correct'] == 1);
+
+        // bandingkan dengan index jawaban yang dipilih user
+        if (selectedAnswers[i] == correctIndex) {
+          correctCount++;
+        }
+      }
+
+      // (Opsional) kirim hasil ke backend
+      final response = await http.post(
+        Uri.parse('http://192.168.217.231:8000/api/submit-quiz'),
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({
+          'score': correctCount,
+          'total': quizzes[0]['questions'].length,
+          'category': widget.categoryName,
+        }),
+      );
+
+      int userRank = 0;
+      if (response.statusCode == 200) {
+        final result = jsonDecode(response.body);
+        userRank = result['rank'] ?? 0;
+      }
+
+      // ✅ Navigasi ke halaman hasil
+      Navigator.pushReplacement(
         context,
-      ).showSnackBar(const SnackBar(content: Text("Kuis selesai! 🎉")));
+        MaterialPageRoute(
+          builder: (context) => Resultpage(
+            correctAnswers: correctCount,
+            totalQuestions: quizzes[0]['questions'].length,
+            userName: userName,
+            userRank: userRank,
+          ),
+        ),
+      );
     }
   }
 

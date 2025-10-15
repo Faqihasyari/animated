@@ -30,25 +30,27 @@ class _SigninPageState extends State<SigninPage> {
       passwordController.text.trim(),
     );
 
-    if (!mounted) return; // ✅ tambahkan ini biar aman
+    if (!mounted) return;
     setState(() => isLoading = false);
 
     final data = jsonDecode(res.body);
 
     if (res.statusCode == 200) {
-      // 🔹 Ambil nama user dari response
+      // 🔹 Ambil data user dan token dari response
       final userName = data['user']['name'];
+      final token =
+          data['token']; // pastikan backend ngirim 'token' di response
 
       // 🔹 Simpan ke SharedPreferences
       final prefs = await SharedPreferences.getInstance();
       await prefs.setString('user_name', userName);
+      await prefs.setString('token', token);
 
       ScaffoldMessenger.of(
-        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(const SnackBar(content: Text("Login berhasil!")));
 
-      // 🔹 Ganti halaman, tidak bisa kembali ke login lagi
+      // 🔹 Arahkan ke halaman utama
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const MyHomePage()),
