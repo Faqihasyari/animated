@@ -345,25 +345,35 @@ class _QuizpageState extends State<Quizpage> {
                             ),
                           );
                         }).toList(),
-                        ElevatedButton(
-                          onPressed: selectedAnswerIndex == null
-                              ? null
-                              : nextQuestion,
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(14.0),
+                          child: ElevatedButton(
+                            onPressed: selectedAnswerIndex == null
+                                ? null
+                                : nextQuestion,
 
-                          style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(50, 50),
-                            backgroundColor: Colors.deepPurple,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: const Size(350, 60),
+                              backgroundColor: btnquiz,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
                             ),
-                          ),
 
-                          child: Text(
-                            currentQuestionIndex ==
-                                    quizzes[0]['questions'].length - 1
-                                ? 'Finish'
-                                : 'Next',
-                            style: const TextStyle(color: Colors.white),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  currentQuestionIndex ==
+                                          quizzes[0]['questions'].length - 1
+                                      ? 'Finish'
+                                      : 'Next',
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                Icon(Icons.arrow_right, color: Colors.white),
+                              ],
+                            ),
                           ),
                         ),
                       ],
