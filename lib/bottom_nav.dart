@@ -29,29 +29,36 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: _pages[_selectedIndex],
 
       // === Bottom Navigation Custom ===
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              blurRadius: 8,
-              offset: Offset(0, -2),
-            ),
-          ],
+      bottomNavigationBar: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildNavItem(Icons.home_outlined, "Home", 0),
-            _buildNavItem(Icons.emoji_events_outlined, "Peringkat", 1),
-            _buildNavItem(Icons.bookmark_border, "Bookmark", 2),
-            _buildNavItem(Icons.settings_outlined, "Pengaturan", 3),
-          ],
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                blurRadius: 8,
+                offset: Offset(0, -2),
+              ),
+            ],
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildNavItem(Icons.home_outlined, "Home", 0),
+              _buildNavItem(Icons.emoji_events_outlined, "Peringkat", 1),
+              _buildNavItem(Icons.bookmark_border, "Bookmark", 2),
+              _buildNavItem(Icons.settings_outlined, "Pengaturan", 3),
+            ],
+          ),
         ),
       ),
     );
@@ -83,11 +90,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           if (!isSelected)
             Padding(
               padding: const EdgeInsets.only(top: 4),
-              child: Icon(
-                icon,
-                color: Colors.grey,
-                size: 24,
-              ),
+              child: Icon(icon, color: Colors.grey, size: 24),
             ),
           const SizedBox(height: 4),
           Text(
