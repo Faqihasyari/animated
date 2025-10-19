@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/bottom_nav.dart';
 import 'package:flutter_application_1/color.dart';
 import 'package:flutter_application_1/home_page.dart';
 import 'package:flutter_application_1/main.dart';
@@ -53,7 +54,7 @@ class _SigninPageState extends State<SigninPage> {
       // 🔹 Arahkan ke halaman utama
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MyHomePage()),
+        MaterialPageRoute(builder: (context) => const BottomNavScreen()),
       );
     } else {
       ScaffoldMessenger.of(

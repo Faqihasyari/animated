@@ -6,6 +6,7 @@ import 'package:flutter_application_1/color.dart';
 import 'package:flutter_application_1/resultPage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Quizpage extends StatefulWidget {
@@ -371,7 +372,11 @@ class _QuizpageState extends State<Quizpage> {
                                       : 'Next',
                                   style: const TextStyle(color: Colors.white),
                                 ),
-                                Icon(Icons.arrow_right, color: Colors.white),
+                                Icon(
+                                  MdiIcons.chevronDoubleRight,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
                               ],
                             ),
                           ),

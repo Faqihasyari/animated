@@ -15,10 +15,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BottomNavScreen(),
-      debugShowCheckedModeBanner: false,
-    );
+    return MaterialApp(home: SigninPage(), debugShowCheckedModeBanner: false);
   }
 }
 
