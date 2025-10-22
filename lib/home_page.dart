@@ -26,6 +26,8 @@ class _MyHomePageState extends State<MyHomePage> {
     'assets/music.png',
   ];
 
+  var nameList2 = ['Quiz Sejarah', 'Geography', 'Technology'];
+
   @override
   void initState() {
     super.initState();
@@ -313,6 +315,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
+              Gri,
             ],
           ),
         ),
