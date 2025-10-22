@@ -98,227 +98,232 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 26),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: 3),
-                    ),
-                    child: CircleAvatar(
-                      radius: 30,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 3),
+                      ),
+                      child: CircleAvatar(
+                        radius: 30,
 
-                      backgroundImage: NetworkImage(
-                        'https://media.istockphoto.com/id/2208884525/id/foto/permukaan-daun-dengan-tetesan-air-makro-dangkal-dofleaf-permukaan-dengan-tetesan-air-makro-dof.jpg?s=1024x1024&w=is&k=20&c=-tRdIPrCaNYembSMp4c0fvd9XKpKobrc4gNBH0t3y6M=',
+                        backgroundImage: NetworkImage(
+                          'https://media.istockphoto.com/id/2208884525/id/foto/permukaan-daun-dengan-tetesan-air-makro-dangkal-dofleaf-permukaan-dengan-tetesan-air-makro-dof.jpg?s=1024x1024&w=is&k=20&c=-tRdIPrCaNYembSMp4c0fvd9XKpKobrc4gNBH0t3y6M=',
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(width: 15),
-                  Column(
-                    spacing: 5,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        userName.isNotEmpty
-                            ? 'Halo, $userName 👋'
-                            : 'Selamat datang di JDQuizz!',
-                        style: GoogleFonts.poppins(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 5,
-                        ),
-                        decoration: BoxDecoration(
-                          border: BoxBorder.all(
-                            color: Colors.white,
-                            width: 0.5,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                          color: Color(0xffD9D9D9).withOpacity(0.5),
-                        ),
-                        child: Center(
-                          child: Text(
-                            userRank.isNotEmpty ? userRank : 'Beginner',
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  Container(
-                    width: 100,
-                    height: 41,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    SizedBox(width: 15),
+                    Column(
+                      spacing: 5,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(1.0),
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                              'https://media.istockphoto.com/id/2208884525/id/foto/permukaan-daun-dengan-tetesan-air-makro-dangkal-dofleaf-permukaan-dengan-tetesan-air-makro-dof.jpg?s=1024x1024&w=is&k=20&c=-tRdIPrCaNYembSMp4c0fvd9XKpKobrc4gNBH0t3y6M=',
-                            ),
+                        Text(
+                          userName.isNotEmpty
+                              ? 'Halo, $userName 👋'
+                              : 'Selamat datang di JDQuizz!',
+                          style: GoogleFonts.poppins(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child: Text('1200'),
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                            vertical: 5,
+                          ),
+                          decoration: BoxDecoration(
+                            border: BoxBorder.all(
+                              color: Colors.white,
+                              width: 0.5,
+                            ),
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color(0xffD9D9D9).withOpacity(0.5),
+                          ),
+                          child: Center(
+                            child: Text(
+                              userRank.isNotEmpty ? userRank : 'Beginner',
+                              style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 25),
-              Container(
-                width: double.infinity,
-                height: 170,
-                decoration: BoxDecoration(
-                  color: containerColor.withOpacity(0.25),
-                  borderRadius: BorderRadius.circular(13),
-                ),
-                child: Row(
-                  children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Container(
-                          width: 160,
-                          height: 160,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: containerColor2.withOpacity(0.5),
-                          ),
-                          child: Image.asset('assets/container1.png'),
-                        ),
+                    Spacer(),
+                    Container(
+                      width: 100,
+                      height: 41,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
                       ),
-                    ),
-                    Expanded(
-                      child: Stack(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Tugas harian'),
-                                SizedBox(height: 10),
-                                Text('14 Soal'),
-                              ],
+                            padding: const EdgeInsets.all(1.0),
+                            child: CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                'https://media.istockphoto.com/id/2208884525/id/foto/permukaan-daun-dengan-tetesan-air-makro-dangkal-dofleaf-permukaan-dengan-tetesan-air-makro-dof.jpg?s=1024x1024&w=is&k=20&c=-tRdIPrCaNYembSMp4c0fvd9XKpKobrc4gNBH0t3y6M=',
+                              ),
                             ),
                           ),
-                          Align(
-                            alignment: Alignment(0.7, -0.7),
-                            child: CircleAvatar(
-                              child: Icon(Icons.access_time_filled_rounded),
-                            ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20),
+                            child: Text('1200'),
                           ),
                         ],
                       ),
                     ),
                   ],
                 ),
-              ),
-              SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Quiz',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                SizedBox(height: 25),
+                Container(
+                  width: double.infinity,
+                  height: 170,
+                  decoration: BoxDecoration(
+                    color: containerColor.withOpacity(0.25),
+                    borderRadius: BorderRadius.circular(13),
                   ),
-                  Text(
-                    'View All',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: List.generate(
-                  nameList.length,
-                  (index) => Column(
+                  child: Row(
                     children: [
-                      GestureDetector(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                Quizpage(categoryName: nameList[index]),
-                          ),
-                        ),
-                        child: Container(
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            color: containerQuiz.withOpacity(0.6),
-                            border: Border.all(color: Colors.white, width: 0.5),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Center(
-                            child: Image.asset(assetList[index], scale: 2.5),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Container(
+                            width: 160,
+                            height: 160,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: containerColor2.withOpacity(0.5),
+                            ),
+                            child: Image.asset('assets/container1.png'),
                           ),
                         ),
                       ),
-                      SizedBox(height: 5),
-                      Text(
-                        nameList[index],
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
+                      Expanded(
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(18.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Tugas harian'),
+                                  SizedBox(height: 10),
+                                  Text('14 Soal'),
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment(0.7, -0.7),
+                              child: CircleAvatar(
+                                child: Icon(Icons.access_time_filled_rounded),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 40),
+                SizedBox(height: 50),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Quiz',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'View All',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: List.generate(
+                    nameList.length,
+                    (index) => Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  Quizpage(categoryName: nameList[index]),
+                            ),
+                          ),
+                          child: Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              color: containerQuiz.withOpacity(0.6),
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 0.5,
+                              ),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Image.asset(assetList[index], scale: 2.5),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          nameList[index],
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(height: 40),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'More Games',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'More Games',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  Text(
-                    'View All',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                    Text(
+                      'View All',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: GridView.builder(
+                  ],
+                ),
+                GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
+                    crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
@@ -330,8 +335,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     );
                   },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
