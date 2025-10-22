@@ -324,14 +324,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 15,
+                    mainAxisSpacing: 15,
+                    childAspectRatio: 0.8,
                   ),
                   itemCount: nameList2.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      color: Colors.black,
-                      child: Center(child: Text('Test 1')),
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Text('asjdh'),
                     );
                   },
                 ),
