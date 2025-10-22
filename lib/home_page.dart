@@ -335,7 +335,27 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: Text('asjdh'),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 150,
+                              width: 500,
+
+                              child: ClipRRect(
+                                borderRadius: BorderRadiusGeometry.circular(3),
+                                child: Image.network(
+                                  'https://plus.unsplash.com/premium_photo-1675827055694-010aef2cf08f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3112',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Text(nameList2[index]),
+                          ],
+                        ),
+                      ),
                     );
                   },
                 ),
