@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'assets/music.png',
   ];
 
-  var nameList2 = ['Quiz Sejarah', 'Geography', 'Technology'];
+  final List<String> nameList2 = ['Quiz Sejarah', 'Geography', 'Technology'];
 
   @override
   void initState() {
@@ -315,7 +315,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ],
               ),
-              Gri,
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                  ),
+                  itemCount: nameList2.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      color: Colors.black,
+                      child: Center(child: Text('Test 1')),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
