@@ -388,7 +388,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             Text(
                               nameList2[index],
-                              style: TextStyle(fontWeight: FontWeight.w600),
+                              style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                             ),
                             Text(
                               questionCounts.isNotEmpty
