@@ -15,10 +15,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  // String for userRank
   String userRank = '';
   List<int> questionCounts = [];
 
+// String for userName user
   String userName = '';
+  // Name list quiz
   var nameList = ['Football', 'Science', 'Fashion', 'Movie', 'Music'];
   var assetList = [
     'assets/Football.png',
