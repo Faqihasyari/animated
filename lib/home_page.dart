@@ -386,6 +386,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                             ),
+                            SizedBox(height: 30,),
+
                             Text(
                               nameList2[index],
                               style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
