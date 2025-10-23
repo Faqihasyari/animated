@@ -402,6 +402,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontSize: 12,
                               ),
                             ),
+
+                            Icon(Icons.blur_linear_outlined)
                           ],
                         ),
                       ),
