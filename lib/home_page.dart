@@ -31,36 +31,35 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<String> nameList2 = ['Quiz Sejarah', 'Geography', 'Technology'];
 
   Future<void> fetchQuizData() async {
-  try {
-    final response = await http.get(
-      Uri.parse('http://192.168.217.231:8000/api/quizzes'),
-      headers: {'Content-Type': 'application/json'},
-    );
+    try {
+      final response = await http.get(
+        Uri.parse('http://192.168.217.231:8000/api/quizzes'),
+        headers: {'Content-Type': 'application/json'},
+      );
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
 
-      // Misal struktur respons seperti:
-      // [
-      //   {"name": "Quiz Sejarah", "questions": [ ... ]},
-      //   {"name": "Geography", "questions": [ ... ]}
-      // ]
+        // Misal struktur respons seperti:
+        // [
+        //   {"name": "Quiz Sejarah", "questions": [ ... ]},
+        //   {"name": "Geography", "questions": [ ... ]}
+        // ]
 
-      setState(() {
-        questionCounts = List<int>.from(
-          data.map((quiz) => quiz['questions']?.length ?? 0),
-        );
-      });
+        setState(() {
+          questionCounts = List<int>.from(
+            data.map((quiz) => quiz['questions']?.length ?? 0),
+          );
+        });
 
-      print('Jumlah soal per quiz: $questionCounts');
-    } else {
-      print('Gagal fetch quiz: ${response.body}');
+        print('Jumlah soal per quiz: $questionCounts');
+      } else {
+        print('Gagal fetch quiz: ${response.body}');
+      }
+    } catch (e) {
+      print('Error ambil data: $e');
     }
-  } catch (e) {
-    print('Error ambil data: $e');
   }
-}
-
 
   @override
   void initState() {
@@ -390,6 +389,15 @@ class _MyHomePageState extends State<MyHomePage> {
                             Text(
                               nameList2[index],
                               style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              questionCounts.isNotEmpty
+                                  ? '${questionCounts[index]} Soal'
+                                  : '...',
+                              style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
                             ),
                           ],
                         ),
