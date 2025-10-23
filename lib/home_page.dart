@@ -390,6 +390,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               nameList2[index],
                               style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                             ),
+                            SizedBox(height: 10,),
                             Text(
                               questionCounts.isNotEmpty
                                   ? '${questionCounts[index]} Soal'
