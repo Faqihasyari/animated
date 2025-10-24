@@ -18,8 +18,9 @@ class _MyHomePageState extends State<MyHomePage> {
   // String for userRank
   String userRank = '';
   List<int> questionCounts = [];
+  List<int> quizPoints = [];
 
-// String for userName user
+  // String for userName user
   String userName = '';
   // Name list quiz
   var nameList = ['Football', 'Science', 'Fashion', 'Movie', 'Music'];
@@ -43,19 +44,18 @@ class _MyHomePageState extends State<MyHomePage> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
 
-        // Misal struktur respons seperti:
-        // [
-        //   {"name": "Quiz Sejarah", "questions": [ ... ]},
-        //   {"name": "Geography", "questions": [ ... ]}
-        // ]
-
         setState(() {
           questionCounts = List<int>.from(
             data.map((quiz) => quiz['questions']?.length ?? 0),
           );
+
+          quizPoints = List<int>.from(
+            data.map((quiz) => quiz['max_points'] ?? 0),
+          );
         });
 
         print('Jumlah soal per quiz: $questionCounts');
+        print('Poin per quiz: $quizPoints');
       } else {
         print('Gagal fetch quiz: ${response.body}');
       }
@@ -389,13 +389,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 30,),
+                            SizedBox(height: 30),
 
                             Text(
                               nameList2[index],
-                              style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+                              style: GoogleFonts.poppins(
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(height: 10),
                             Text(
                               questionCounts.isNotEmpty
                                   ? '${questionCounts[index]} Soal'
@@ -405,8 +407,16 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontSize: 12,
                               ),
                             ),
-
-                            Icon(Icons.blur_linear_outlined)
+                            Row(
+                              children: [
+                                Image.asset('coin.jpg', scale: 2),
+                                Text(
+                                  quizPoints.isNotEmpty
+                                      ? '${quizPoints[index]}K'
+                                      : '....',
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
