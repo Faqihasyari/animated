@@ -6,7 +6,7 @@ class ApiService {
   static const baseUrl =
       'http://192.168.217.231:8000/api'; // ganti sesuai platform
 
-  // 🔹 Register
+  // 🔹 function  for Register 
   static Future<http.Response> register(
     String name,
     String email,
@@ -30,7 +30,7 @@ class ApiService {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setString('token', data['token']); // simpan token
+      await prefs.setString('token', data['token']); 
     }
 
     return response;
