@@ -48,11 +48,13 @@ class _SigninPageState extends State<SigninPage> {
       await prefs.setString('token', token);
 
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(const SnackBar(content: Text("Login berhasil!")));
 
       // 🔹 Arahkan ke halaman utama
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const BottomNavScreen()),
       );
@@ -69,11 +71,11 @@ class _SigninPageState extends State<SigninPage> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter, // mulai dari atas
-            end: Alignment.bottomCenter, // berakhir di bawah
+            begin: Alignment.topCenter, 
+            end: Alignment.bottomCenter, 
             colors: [
-              gradient1, // warna atas
-              gradient2, // warna bawah
+              gradient1, 
+              gradient2, 
               gradient3,
               gradient4,
             ],
@@ -84,7 +86,7 @@ class _SigninPageState extends State<SigninPage> {
           child: Center(
             child: Column(
               crossAxisAlignment:
-                  CrossAxisAlignment.start, // ⬅️ horizontal tengah
+                  CrossAxisAlignment.start, 
               children: [
                 SizedBox(height: 5),
                 Center(
