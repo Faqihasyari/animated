@@ -6,7 +6,7 @@ class ApiService {
   static const baseUrl =
       'http://192.168.217.231:8000/api'; // ganti sesuai platform
 
-  // 🔹 function  for Register 
+  // 🔹 function for Register 
   static Future<http.Response> register(
     String name,
     String email,
@@ -19,7 +19,7 @@ class ApiService {
     );
   }
 
-  // 🔹 Login
+  // 🔹 function for Login
   static Future<http.Response> login(String email, String password) async {
     final response = await http.post(
       Uri.parse('$baseUrl/login'),
