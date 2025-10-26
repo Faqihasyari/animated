@@ -47,6 +47,7 @@ class _QuizpageState extends State<Quizpage> {
       'Music': 'Musik',
       'Geography': 'Geography',
       'Technology': 'Technology',
+      'Quiz Sejarah': 'Sejarah',
     };
 
     // 🔹 Konversi nama kategori Flutter ke nama di database

@@ -357,97 +357,100 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-                GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
-                    childAspectRatio: 0.8,
-                  ),
-                  itemCount: nameList2.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              Quizpage(categoryName: nameList2[index]),
-                        ),
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 150,
-                                width: 500,
-
-                                child: ClipRRect(
-                                  borderRadius: BorderRadiusGeometry.circular(
-                                    3,
-                                  ),
-                                  child: Image.network(
-                                    'https://plus.unsplash.com/premium_photo-1675827055694-010aef2cf08f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3112',
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 30),
-
-                              Text(
-                                nameList2[index],
-                                style: GoogleFonts.poppins(
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              Text(
-                                questionCounts.isNotEmpty
-                                    ? '${questionCounts[index]} Soal'
-                                    : '...',
-                                style: const TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  Image.asset('coin.jpg', scale: 2),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    quizPoints.isNotEmpty
-                                        ? '${quizPoints[index]}K'
-                                        : '....',
-                                    style: GoogleFonts.poppins(
-                                      color: btnquiz,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                  CircleAvatar(
-                                    radius: 20,
-                                    backgroundColor: btnquiz,
-                                    child: Icon(
-                                      MdiIcons.lightningBolt,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                SizedBox(
+                  height: 800,
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      childAspectRatio: 0.8,
+                    ),
+                    itemCount: nameList2.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Quizpage(categoryName: nameList2[index]),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 150,
+                                  width: 500,
+
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadiusGeometry.circular(
+                                      3,
+                                    ),
+                                    child: Image.network(
+                                      'https://plus.unsplash.com/premium_photo-1675827055694-010aef2cf08f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=3112',
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 30),
+
+                                Text(
+                                  nameList2[index],
+                                  style: GoogleFonts.poppins(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  questionCounts.isNotEmpty
+                                      ? '${questionCounts[index]} Soal'
+                                      : '...',
+                                  style: const TextStyle(
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                Row(
+                                  children: [
+                                    Image.asset('coin.jpg', scale: 2),
+                                    SizedBox(width: 5),
+                                    Text(
+                                      quizPoints.isNotEmpty
+                                          ? '${quizPoints[index]}K'
+                                          : '....',
+                                      style: GoogleFonts.poppins(
+                                        color: btnquiz,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: btnquiz,
+                                      child: Icon(
+                                        MdiIcons.lightningBolt,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
