@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> fetchQuizData() async {
     try {
       final response = await http.get(
-        Uri.parse('http://192.168.217.231:8000/api/quizzes'),
+        Uri.parse('http://192.168.101.231:8000/api/quizzes'),
         headers: {'Content-Type': 'application/json'},
       );
 
