@@ -410,10 +410,15 @@ class _MyHomePageState extends State<MyHomePage> {
                             Row(
                               children: [
                                 Image.asset('coin.jpg', scale: 2),
+                                SizedBox(width: 5),
                                 Text(
                                   quizPoints.isNotEmpty
                                       ? '${quizPoints[index]}K'
                                       : '....',
+                                  style: GoogleFonts.poppins(
+                                    color: btnquiz,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ],
                             ),
