@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/color.dart';
 import 'package:flutter_application_1/quizpage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -418,6 +419,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                   style: GoogleFonts.poppins(
                                     color: btnquiz,
                                     fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                Spacer(),
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: btnquiz,
+                                  child: Icon(
+                                    MdiIcons.lightningBolt,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
