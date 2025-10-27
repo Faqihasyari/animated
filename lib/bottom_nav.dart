@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/home_page.dart';
+import 'package:flutter_application_1/leaderboard_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   // Daftar halaman (Home + dummy lainnya)
   final List<Widget> _pages = const [
     MyHomePage(),
-    Center(child: Text("🏆 Peringkat")),
+    LeaderboardPage(),
     Center(child: Text("🔖 Bookmark")),
     Center(child: Text("⚙️ Pengaturan")),
   ];

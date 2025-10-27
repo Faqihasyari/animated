@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/SignIn_page.dart';
 import 'package:flutter_application_1/bottom_nav.dart';
 import 'package:flutter_application_1/home_page.dart';
+import 'package:flutter_application_1/leaderboard_page.dart';
 import 'package:flutter_application_1/registe_page.dart';
 
 void main() {
@@ -15,7 +16,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage(), debugShowCheckedModeBanner: false);
+    return MaterialApp(
+      home: BottomNavScreen(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 
