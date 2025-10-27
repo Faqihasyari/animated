@@ -26,16 +26,23 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
           focal: Alignment.center, // titik fokus (opsional)
         ),
       ),
-      child: Column(
-        children: [
-          Text(
-            'Leaderboard',
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w500,
-              color: Colors.black,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+        child: Column(
+          children: [
+            Text(
+              'Leaderboard',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
             ),
-          ),
-        ],
+            Row(children: [
+                
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
