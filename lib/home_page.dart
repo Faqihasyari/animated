@@ -208,7 +208,11 @@ class _MyHomePageState extends State<MyHomePage> {
                           Padding(
                             padding: const EdgeInsets.all(1.0),
                             child: CircleAvatar(
-                              child: Icon(MdiIcons.lightningBolt),
+                              backgroundColor: btnquiz,
+                              child: Icon(
+                                MdiIcons.lightningBolt,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                           Padding(
