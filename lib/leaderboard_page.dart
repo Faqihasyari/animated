@@ -34,9 +34,13 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
               'Leaderboard',
               style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: Colors.white,
+                fontSize: 25,
               ),
             ),
+            Container(
+              
+            )
             Row(children: [
                 
               ],
