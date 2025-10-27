@@ -39,11 +39,16 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
               ),
             ),
             Container(
-              
-            )
-            Row(children: [
-                
-              ],
+              width: 420,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [Text('All time'), Text('This Week'), Text('Month')],
+              ),
             ),
           ],
         ),
