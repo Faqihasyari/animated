@@ -59,10 +59,10 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                         ? Alignment.center
                         : Alignment.centerRight,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Container(
                         height: 45,
-                        width: MediaQuery.of(context).size.width * 0.2,
+                        width: MediaQuery.of(context).size.width / 4.9,
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(10),
@@ -73,7 +73,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      _buildTextOption('All time', 0),
+                      Center(child: _buildTextOption('All time', 0)),
                       _buildTextOption('This Week', 1),
                       _buildTextOption('Month', 2),
                     ],
