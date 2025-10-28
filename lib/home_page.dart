@@ -366,7 +366,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 15,
                     mainAxisSpacing: 15,
-                    childAspectRatio: 0.7555,
+                    childAspectRatio: 0.82,
                   ),
                   itemCount: nameList2.length,
                   itemBuilder: (context, index) {
@@ -402,7 +402,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 30),
+                              SizedBox(height: 10),
 
                               Text(
                                 nameList2[index],
@@ -420,6 +420,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   fontSize: 12,
                                 ),
                               ),
+                              SizedBox(height: 10),
                               Row(
                                 children: [
                                   Image.asset('coin.jpg', scale: 2),
