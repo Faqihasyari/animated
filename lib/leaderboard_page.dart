@@ -9,6 +9,8 @@ class LeaderboardPage extends StatefulWidget {
   State<LeaderboardPage> createState() => _LeaderboardPageState();
 }
 
+int selectedIndex = 0;
+
 class _LeaderboardPageState extends State<LeaderboardPage> {
   @override
   Widget build(BuildContext context) {
@@ -45,23 +47,76 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+              child: Stack(
                 children: [
-                  AnimatedContainer(
-                    duration: Duration(milliseconds: 1000),
-                    height: 45,
-                    width: 100,
-                    color: Colors.black,
-                    
-                    child: Text('All time'),
+                  // Container biru bergerak
+                  AnimatedAlign(
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    alignment: selectedIndex == 0
+                        ? Alignment.centerLeft
+                        : selectedIndex == 1
+                        ? Alignment.center
+                        : Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Container(
+                        height: 45,
+                        width: MediaQuery.of(context).size.width * 0.2,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
                   ),
-                  Text('This Week'),
-                  Text('Month'),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      _buildTextOption('All time', 0),
+                      _buildTextOption('This Week', 1),
+                      _buildTextOption('Month', 2),
+                    ],
+                  ),
                 ],
               ),
+
+              // child: Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+              //   children: [
+              //     AnimatedContainer(
+              //       duration: Duration(milliseconds: 1000),
+              //       height: 45,
+              //       width: 100,
+              //       color: Colors.blue,
+
+              //       child: Center(child: Text('All time')),
+              //     ),
+              //     Text('This Week'),
+              //     Text('Month'),
+              //   ],
+              // ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTextOption(String text, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedIndex = index;
+        });
+      },
+      child: Text(
+        text,
+        style: TextStyle(
+          color: selectedIndex == index ? Colors.white : Colors.black,
+          fontWeight: selectedIndex == index
+              ? FontWeight.bold
+              : FontWeight.normal,
         ),
       ),
     );
