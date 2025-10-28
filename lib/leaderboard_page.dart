@@ -39,7 +39,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
               ),
             ),
             Container(
-              width: 420,
+              width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -47,7 +47,18 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [Text('All time'), Text('This Week'), Text('Month')],
+                children: [
+                  AnimatedContainer(
+                    duration: Duration(milliseconds: 1000),
+                    height: 45,
+                    width: 100,
+                    color: Colors.black,
+                    
+                    child: Text('All time'),
+                  ),
+                  Text('This Week'),
+                  Text('Month'),
+                ],
               ),
             ),
           ],
