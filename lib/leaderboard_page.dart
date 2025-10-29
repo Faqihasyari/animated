@@ -59,12 +59,12 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                         ? Alignment.center
                         : Alignment.centerRight,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
                       child: Container(
                         height: 45,
-                        width: MediaQuery.of(context).size.width / 4.9,
+                        width: MediaQuery.of(context).size.width / 4,
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: icon,
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
@@ -80,22 +80,6 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                   ),
                 ],
               ),
-
-              // child: Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: [
-              //     AnimatedContainer(
-              //       duration: Duration(milliseconds: 1000),
-              //       height: 45,
-              //       width: 100,
-              //       color: Colors.blue,
-
-              //       child: Center(child: Text('All time')),
-              //     ),
-              //     Text('This Week'),
-              //     Text('Month'),
-              //   ],
-              // ),
             ),
           ],
         ),
