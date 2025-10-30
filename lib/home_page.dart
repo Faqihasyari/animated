@@ -34,31 +34,36 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   Future<Map<String, dynamic>> fetchDailyTask() async {
-  try {
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
 
-    if (token == null) {
-      throw Exception("Token tidak ditemukan. Harap login dulu.");
+      if (token == null) {
+        throw Exception("Token tidak ditemukan. Harap login dulu.");
+      }
+
+      final response = await http.get(
+        Uri.parse('http://192.168.101.231/api/daily-task'),
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body);
+      } else {
+        throw Exception(
+          'Gagal memuat data task harian: ${response.statusCode}',
+        );
+      }
+    } catch (e) {
+      print("Error: $e");
+      rethrow;
     }
-
-    final response = await http.get(
-      Uri.parse('http://192.168.101.231/api/daily-task'),
-      headers: {'Accept': 'application/json', 'Authorization': 'Bearer $token'},
-    );
-
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body);
-    } else {
-      throw Exception('Gagal memuat data task harian: ${response.statusCode}');
-    }
-  } catch (e) {
-    print("Error: $e");
-    rethrow;
   }
-}
 
-int selectedIndex = 0;
+  int selectedIndex = 0;
 
   final List<String> nameList2 = ['Quiz Sejarah', 'Geography', 'Technology'];
 
@@ -163,7 +168,6 @@ int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: primaryColor,
 
@@ -308,17 +312,21 @@ int selectedIndex = 0;
                                   SizedBox(height: 10),
                                   Text('14 Soal'),
                                   LinearProgressIndicator(
-              value: progressValue,
-              backgroundColor: Colors.white24,
-              color: isCompleted ? Colors.greenAccent : Colors.orangeAccent,
-              minHeight: 10,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            const SizedBox(height: 10),
-            Text(
-              "Progress: $answered / $target",
-              style: GoogleFonts.poppins(color: Colors.white),
-            ),
+                                    value: progressValue,
+                                    backgroundColor: Colors.white24,
+                                    color: isCompleted
+                                        ? Colors.greenAccent
+                                        : Colors.orangeAccent,
+                                    minHeight: 10,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    "Progress: $answered / $target",
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

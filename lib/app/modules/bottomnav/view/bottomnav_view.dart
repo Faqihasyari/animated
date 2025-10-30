@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/modules/bottomnav/controller/bottomnav_controller.dart';
 import 'package:flutter_application_1/app/modules/leaderboard/views/leaderboard_views.dart';
-import 'package:flutter_application_1/leaderboard_page.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // import halaman lain
 import 'package:flutter_application_1/app/modules/home/views/home_view.dart';
-
 
 class BottomNavView extends GetView<BottomNavController> {
   const BottomNavView({super.key});
@@ -22,40 +20,42 @@ class BottomNavView extends GetView<BottomNavController> {
       Center(child: Text("⚙️ Pengaturan")),
     ];
 
-    return Obx(() => Scaffold(
-          extendBody: true,
-          body: pages[controller.selectedIndex.value],
+    return Obx(
+      () => Scaffold(
+        extendBody: true,
+        body: pages[controller.selectedIndex.value],
 
-          // === Bottom Navigation Custom ===
-          bottomNavigationBar: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
+        // === Bottom Navigation Custom ===
+        bottomNavigationBar: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+          child: Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 8,
+                  offset: Offset(0, -2),
+                ),
+              ],
             ),
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8,
-                    offset: Offset(0, -2),
-                  ),
-                ],
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  _buildNavItem(Icons.home_outlined, "Home", 0),
-                  _buildNavItem(Icons.emoji_events_outlined, "Peringkat", 1),
-                  _buildNavItem(Icons.bookmark_border, "Bookmark", 2),
-                  _buildNavItem(Icons.settings_outlined, "Pengaturan", 3),
-                ],
-              ),
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildNavItem(Icons.home_outlined, "Home", 0),
+                _buildNavItem(Icons.emoji_events_outlined, "Peringkat", 1),
+                _buildNavItem(Icons.bookmark_border, "Bookmark", 2),
+                _buildNavItem(Icons.settings_outlined, "Pengaturan", 3),
+              ],
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
   Widget _buildNavItem(IconData icon, String label, int index) {

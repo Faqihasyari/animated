@@ -62,18 +62,33 @@ class HomeController extends GetxController {
 
   Future<void> fetchQuizData() async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/quizzes'));
+      final response = await http.get(
+        Uri.parse('http://192.168.101.231:8000/api/quizzes'),
+        headers: {'Content-Type': 'application/json'},
+      );
+
       if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        questionCounts.value =
-            List<int>.from(data.map((q) => q['questions']?.length ?? 0));
-        quizPoints.value =
-            List<int>.from(data.map((q) => q['max_points'] ?? 0));
+        final decoded = jsonDecode(response.body);
+        print("Response quiz raw: $decoded"); // 🔍 cek struktur JSON-nya
+
+        // kalau response mengandung field 'data', ambil dari situ
+        final List quizList = decoded is List ? decoded : decoded['data'];
+
+        questionCounts.value = List<int>.from(
+          quizList.map((quiz) => quiz['questions']?.length ?? 0),
+        );
+
+        quizPoints.value = List<int>.from(
+          quizList.map((quiz) => quiz['max_points'] ?? 0),
+        );
+
+        print('✅ Jumlah soal per quiz: $questionCounts');
+        print('✅ Poin per quiz: $quizPoints');
       } else {
-        print("Gagal fetch quiz: ${response.body}");
+        print('❌ Gagal fetch quiz: ${response.body}');
       }
     } catch (e) {
-      print("Error quiz data: $e");
+      print('⚠️ Error ambil data: $e');
     }
   }
 }

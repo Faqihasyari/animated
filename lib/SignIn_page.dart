@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/bottom_nav.dart';
+import 'package:flutter_application_1/app/modules/bottomnav/view/bottomnav_view.dart';
 import 'package:flutter_application_1/color.dart';
-import 'package:flutter_application_1/home_page.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/registe_page.dart';
 import 'package:flutter_application_1/services/api_service.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -53,11 +53,7 @@ class _SigninPageState extends State<SigninPage> {
       ).showSnackBar(const SnackBar(content: Text("Login berhasil!")));
 
       // 🔹 Arahkan ke halaman utama
-      Navigator.pushReplacement(
-        // ignore: use_build_context_synchronously
-        context,
-        MaterialPageRoute(builder: (context) => const BottomNavScreen()),
-      );
+      Get.offAllNamed('/bottomnav');
     } else {
       ScaffoldMessenger.of(
         context,
@@ -71,22 +67,16 @@ class _SigninPageState extends State<SigninPage> {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter, 
-            end: Alignment.bottomCenter, 
-            colors: [
-              gradient1, 
-              gradient2, 
-              gradient3,
-              gradient4,
-            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [gradient1, gradient2, gradient3, gradient4],
           ),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 40),
           child: Center(
             child: Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start, 
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 5),
                 Center(
