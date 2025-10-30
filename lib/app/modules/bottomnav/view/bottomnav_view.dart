@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/modules/bottomnav/controller/bottomnav_controller.dart';
+import 'package:flutter_application_1/app/modules/leaderboard/views/leaderboard_views.dart';
+import 'package:flutter_application_1/leaderboard_page.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // import halaman lain
 import 'package:flutter_application_1/app/modules/home/views/home_view.dart';
-import 'package:flutter_application_1/app/modules/leaderboard/views/leaderboard_view.dart';
-import '../../home/bottomnav/controllers/bottomnav_controller.dart';
+
 
 class BottomNavView extends GetView<BottomNavController> {
   const BottomNavView({super.key});

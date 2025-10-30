@@ -1,5 +1,5 @@
+import 'package:flutter_application_1/app/modules/bottomnav/controller/bottomnav_controller.dart';
 import 'package:get/get.dart';
-import '../../home/bottomnav/controllers/bottomnav_controller.dart';
 
 class BottomNavBinding extends Bindings {
   @override
