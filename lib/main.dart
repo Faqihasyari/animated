@@ -49,7 +49,7 @@ class MainApp extends StatelessWidget {
           page: () => const BottomNavView(),
           binding: BottomNavBinding(),
         ),
-        GetPage(name: '/quiz', page: () => QuizView()),
+        // GetPage(name: '/quiz', page: () => QuizView()),
         GetPage(name: '/result', page: () => ResultPage()),
         GetPage(name: '/leaderboard', page: () => const LeaderboardView()),
       ],

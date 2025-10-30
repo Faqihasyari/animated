@@ -7,11 +7,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class QuizView extends GetView<QuizController> {
-  const QuizView({super.key,});
+  final String categoryName;
+  const QuizView({super.key, required this.categoryName});
 
   @override
   Widget build(BuildContext context) {
-     final String categoryName = Get.arguments['categoryName'] ?? 'Unknown';
     // Memanggil data quiz
     controller.fetchQuizzes(categoryName);
 
@@ -218,7 +218,7 @@ class QuizView extends GetView<QuizController> {
                               if (controller.currentQuestionIndex.value ==
                                   controller.quizzes[0]['questions'].length -
                                       1) {
-                                Get.offAllNamed('/result');
+                                Get.to(ResultPage());
                               } else {
                                 controller.currentQuestionIndex.value++;
                               }
