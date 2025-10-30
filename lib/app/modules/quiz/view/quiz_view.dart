@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/modules/quiz/controller/quiz_controller.dart';
+import 'package:flutter_application_1/app/modules/result_page/views/result_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/color.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class QuizView extends GetView<QuizController> {
-  final String categoryName;
-  const QuizView({super.key, required this.categoryName});
+  const QuizView({super.key,});
 
   @override
   Widget build(BuildContext context) {
+     final String categoryName = Get.arguments['categoryName'] ?? 'Unknown';
     // Memanggil data quiz
     controller.fetchQuizzes(categoryName);
 
@@ -33,14 +34,18 @@ class QuizView extends GetView<QuizController> {
           );
         }
 
-        final currentQuestion = controller.quizzes[0]['questions'][controller.currentQuestionIndex.value];
+        final currentQuestion = controller
+            .quizzes[0]['questions'][controller.currentQuestionIndex.value];
         final answers = currentQuestion['answers'] as List;
 
         return Container(
           decoration: const BoxDecoration(
             gradient: RadialGradient(
               colors: [
-                radialGradient, radialGradient2, radialGradient3, radialGradient4
+                radialGradient,
+                radialGradient2,
+                radialGradient3,
+                radialGradient4,
               ],
               center: Alignment.center,
               radius: 1.7,
@@ -65,7 +70,10 @@ class QuizView extends GetView<QuizController> {
                     ),
                     Text(
                       'Question ${controller.currentQuestionIndex.value + 1} of ${controller.quizzes[0]['questions'].length}',
-                      style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w500),
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     ElevatedButton(
                       onPressed: () {},
@@ -120,20 +128,31 @@ class QuizView extends GetView<QuizController> {
                         final index = entry.key;
                         final answer = entry.value;
                         final optionLetter = String.fromCharCode(65 + index);
-                        final bool isSelected = controller.selectedAnswerIndex.value == index;
+                        final bool isSelected =
+                            controller.selectedAnswerIndex.value == index;
 
                         return GestureDetector(
                           onTap: () {
                             controller.selectedAnswerIndex.value = index;
                           },
                           child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 6,
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 14,
+                            ),
                             decoration: BoxDecoration(
-                              color: isSelected ? const Color(0xFFC8FCEA) : Colors.white,
+                              color: isSelected
+                                  ? const Color(0xFFC8FCEA)
+                                  : Colors.white,
                               borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: isSelected ? Colors.green : Colors.grey.shade300,
+                                color: isSelected
+                                    ? Colors.green
+                                    : Colors.grey.shade300,
                                 width: 1.5,
                               ),
                               boxShadow: [
@@ -156,7 +175,10 @@ class QuizView extends GetView<QuizController> {
                                   ),
                                   child: Text(
                                     optionLetter,
-                                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(width: 10),
@@ -180,29 +202,49 @@ class QuizView extends GetView<QuizController> {
                       Padding(
                         padding: const EdgeInsets.all(14.0),
                         child: ElevatedButton(
-                          onPressed: controller.selectedAnswerIndex.value == null
+                          onPressed:
+                              controller.selectedAnswerIndex.value == null
                               ? null
                               : controller.nextQuestion,
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size(350, 60),
                             backgroundColor: btnquiz,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                controller.currentQuestionIndex.value == controller.quizzes[0]['questions'].length - 1
-                                    ? 'Finish'
-                                    : 'Next',
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                              Icon(
+                          child: GestureDetector(
+                            onTap: () {
+                              if (controller.currentQuestionIndex.value ==
+                                  controller.quizzes[0]['questions'].length -
+                                      1) {
+                                Get.offAllNamed('/result');
+                              } else {
+                                controller.currentQuestionIndex.value++;
+                              }
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Obx(
+                                  () => Text(
+                                    controller.currentQuestionIndex.value ==
+                                            controller
+                                                    .quizzes[0]['questions']
+                                                    .length -
+                                                1
+                                        ? 'Finish'
+                                        : 'Next',
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                                Icon(
                                   MdiIcons.chevronDoubleRight,
                                   color: Colors.white,
                                   size: 30,
                                 ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -212,8 +254,8 @@ class QuizView extends GetView<QuizController> {
               ],
             ),
           ),
-        );}
-      ),
+        );
+      }),
     );
   }
 }

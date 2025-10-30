@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/modules/bottomnav/bindings/bottomnav_binding.dart';
-import 'package:flutter_application_1/app/modules/bottomnav/controller/bottomnav_controller.dart';
 import 'package:flutter_application_1/app/modules/bottomnav/view/bottomnav_view.dart';
 import 'package:flutter_application_1/app/modules/home/controller/home_controller.dart';
 import 'package:flutter_application_1/app/modules/leaderboard/controller/leaderboard_controller.dart';
 import 'package:flutter_application_1/app/modules/leaderboard/views/leaderboard_views.dart';
+import 'package:flutter_application_1/app/modules/quiz/controller/quiz_controller.dart';
+import 'package:flutter_application_1/app/modules/quiz/view/quiz_view.dart';
+import 'package:flutter_application_1/app/modules/result_page/controller/result_controller.dart';
+import 'package:flutter_application_1/app/modules/result_page/views/result_view.dart';
 import 'package:get/get.dart'; // ✅ tambahkan ini
 
 import 'package:flutter_application_1/SignIn_page.dart';
@@ -17,7 +20,10 @@ import 'package:flutter_application_1/app/modules/home/views/home_view.dart';
 
 void main() {
   Get.put(HomeController());
+  Get.put(ResultController());
+
   Get.put(LeaderboardController());
+  Get.put(QuizController());
   runApp(const MainApp());
 }
 
@@ -43,6 +49,8 @@ class MainApp extends StatelessWidget {
           page: () => const BottomNavView(),
           binding: BottomNavBinding(),
         ),
+        GetPage(name: '/quiz', page: () => QuizView()),
+        GetPage(name: '/result', page: () => ResultPage()),
         GetPage(name: '/leaderboard', page: () => const LeaderboardView()),
       ],
     );

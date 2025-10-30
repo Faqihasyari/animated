@@ -54,10 +54,10 @@ class LeaderboardView extends GetView<LeaderboardController> {
                       alignment: controller.selectedIndex.value == 0
                           ? Alignment.centerLeft
                           : controller.selectedIndex.value == 1
-                              ? Alignment.center
-                              : Alignment.centerRight,
+                          ? Alignment.center
+                          : Alignment.centerRight,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        padding: const EdgeInsets.symmetric(horizontal: 7),
                         child: Container(
                           height: 45,
                           width: MediaQuery.of(context).size.width / 4,
@@ -71,7 +71,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildTextOption('All time', 0),
+                        Center(child: _buildTextOption('All time', 0)),
                         _buildTextOption('This Week', 1),
                         _buildTextOption('Month', 2),
                       ],
