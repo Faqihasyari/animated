@@ -205,53 +205,8 @@ class QuizView extends GetView<QuizController> {
                           onPressed:
                               controller.selectedAnswerIndex.value == null
                               ? null
-                              : () {
-                                  final current =
-                                      controller.currentQuestionIndex.value;
-                                  final total =
-                                      controller
-                                          .quizzes[0]['questions']
-                                          ?.length ??
-                                      0;
-
-                                  if (total == 0) {
-                                    Get.snackbar(
-                                      "Error",
-                                      "Soal belum dimuat dengan benar",
-                                    );
-                                    return;
-                                  }
-
-                                  if (current == total - 1) {
-                                    // Ambil controller result
-                                    final resultController = Get.put(
-                                      ResultController(),
-                                    );
-
-                                    // Set hasil kuis dari quiz controller
-                                    resultController.setResult(
-                                      correct: controller
-                                          .correctAnswers
-                                          .value, // jumlah jawaban benar
-                                      total: total, // total pertanyaan
-                                      name: controller
-                                          .userName
-                                          .value, // bisa dari auth
-                                      rank: controller
-                                          .userRank
-                                          .value, // kalau ada rank
-                                    );
-
-                                    // Arahkan ke ResultPage
-                                    Get.to(() => const ResultPage());
-                                  } else {
-                                    // Lanjut ke soal berikutnya
-                                    controller.currentQuestionIndex.value++;
-
-                                    // Reset pilihan jawaban agar tidak ter-highlight
-                                    controller.selectedAnswerIndex.value = null;
-                                  }
-                                },
+                              : () => controller
+                                    .nextQuestion(), // ✅ HANYA INI SAJA
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size(350, 60),
                             backgroundColor: btnquiz,
@@ -266,9 +221,8 @@ class QuizView extends GetView<QuizController> {
                                 () => Text(
                                   controller.currentQuestionIndex.value ==
                                           (controller
-                                                      .quizzes[0]['questions']
-                                                      ?.length ??
-                                                  0) -
+                                                  .quizzes[0]['questions']
+                                                  .length) -
                                               1
                                       ? 'Finish'
                                       : 'Next',
