@@ -9,20 +9,29 @@ class QuizController extends GetxController {
   var currentQuestionIndex = 0.obs;
   var selectedAnswerIndex = Rxn<int>();
   var correctAnswers = 0.obs;
-var userName = ''.obs; // dari login user
-var userRank = 0.obs;  // bisa dari leaderboard, kalau ada
-
+  var userName = ''.obs; // dari login user
+  var userRank = 0.obs; // bisa dari leaderboard, kalau ada
 
   // Progress
   var progress = 0.0.obs;
 
   void checkAnswer(int selectedIndex) {
-  final correctIndex = quizzes[0]['questions'][currentQuestionIndex.value]['correct_index'];
-  if (selectedIndex == correctIndex) {
-    correctAnswers.value++;
-  }
-}
+    // Hanya proses jika belum memilih sebelumnya
+    if (selectedAnswerIndex.value != null) return;
 
+    final currentQuestion = quizzes[0]['questions'][currentQuestionIndex.value];
+    final answers = currentQuestion['answers'] as List;
+
+    final correctIndex = answers.indexWhere(
+      (a) => a['is_correct'] == 1 || a['is_correct'] == true,
+    );
+
+    if (selectedIndex == correctIndex) {
+      correctAnswers.value++;
+    }
+
+    selectedAnswerIndex.value = selectedIndex;
+  }
 
   // Load quiz berdasarkan kategori
   Future<void> fetchQuizzes(String categoryName) async {
@@ -48,7 +57,9 @@ var userRank = 0.obs;  // bisa dari leaderboard, kalau ada
     String categoryToSend = categoryMap[categoryName] ?? categoryName;
 
     final response = await http.get(
-      Uri.parse('http://192.168.101.231:8000/api/quizzes?category=$categoryToSend'),
+      Uri.parse(
+        'http://192.168.101.231:8000/api/quizzes?category=$categoryToSend',
+      ),
       headers: {'Authorization': 'Bearer $token'},
     );
 
@@ -70,7 +81,8 @@ var userRank = 0.obs;  // bisa dari leaderboard, kalau ada
 
     if (currentQuestionIndex.value < quizzes[0]['questions'].length - 1) {
       currentQuestionIndex.value++;
-      selectedAnswerIndex.value = selectedAnswers.length > currentQuestionIndex.value
+      selectedAnswerIndex.value =
+          selectedAnswers.length > currentQuestionIndex.value
           ? selectedAnswers[currentQuestionIndex.value]
           : null;
     } else {
@@ -113,11 +125,14 @@ var userRank = 0.obs;  // bisa dari leaderboard, kalau ada
     }
 
     // Navigasi ke halaman hasil
-    Get.toNamed('/result', arguments: {
-      'correctAnswers': correctCount,
-      'totalQuestions': quizzes[0]['questions'].length,
-      'userName': userName,
-      'userRank': userRank,
-    });
+    Get.toNamed(
+      '/result',
+      arguments: {
+        'correctAnswers': correctCount,
+        'totalQuestions': quizzes[0]['questions'].length,
+        'userName': userName,
+        'userRank': userRank,
+      },
+    );
   }
 }

@@ -225,25 +225,32 @@ class QuizView extends GetView<QuizController> {
                                   }
 
                                   if (current == total - 1) {
-                                    // Pastikan controller result tidak duplikat
-                                    if (!Get.isRegistered<ResultController>()) {
-                                      Get.put(ResultController());
-                                    }
-
-                                    // Set hasil kuis
-                                    final resultController =
-                                        Get.find<ResultController>();
-                                    resultController.setResult(
-                                      correct: controller.correctAnswers.value,
-                                      total: total,
-                                      name: controller.userName.value,
-                                      rank: controller.userRank.value,
+                                    // Ambil controller result
+                                    final resultController = Get.put(
+                                      ResultController(),
                                     );
 
-                                    // Ganti halaman kuis dengan halaman hasil
-                                    Get.off(() => const ResultPage());
+                                    // Set hasil kuis dari quiz controller
+                                    resultController.setResult(
+                                      correct: controller
+                                          .correctAnswers
+                                          .value, // jumlah jawaban benar
+                                      total: total, // total pertanyaan
+                                      name: controller
+                                          .userName
+                                          .value, // bisa dari auth
+                                      rank: controller
+                                          .userRank
+                                          .value, // kalau ada rank
+                                    );
+
+                                    // Arahkan ke ResultPage
+                                    Get.to(() => const ResultPage());
                                   } else {
+                                    // Lanjut ke soal berikutnya
                                     controller.currentQuestionIndex.value++;
+
+                                    // Reset pilihan jawaban agar tidak ter-highlight
                                     controller.selectedAnswerIndex.value = null;
                                   }
                                 },

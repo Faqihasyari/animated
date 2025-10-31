@@ -219,13 +219,7 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      QuizView(categoryName: nameList[index]),
-                                ),
-                              );
+                              Get.toNamed('/quiz', arguments: nameList[index]);
                             },
                             child: Container(
                               height: 80,
@@ -292,13 +286,14 @@ class HomeView extends GetView<HomeController> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  QuizView(categoryName: nameList2[index]),
-                            ),
-                          );
+                          Get.toNamed('/quiz', arguments: nameList2[index]);
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) =>
+                          //         QuizView(categoryName: nameList2[index]),
+                          //   ),
+                          // );
                         },
 
                         child: Container(

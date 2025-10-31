@@ -106,7 +106,7 @@ class ResultPage extends GetView<ResultController> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () => Get.back(),
+                      onPressed: () => Get.offAllNamed('/bottomnav'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFFF6F3C),
                         shape: RoundedRectangleBorder(

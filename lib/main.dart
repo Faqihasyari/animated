@@ -2,28 +2,24 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/modules/bottomnav/bindings/bottomnav_binding.dart';
 import 'package:flutter_application_1/app/modules/bottomnav/view/bottomnav_view.dart';
-import 'package:flutter_application_1/app/modules/home/controller/home_controller.dart';
-import 'package:flutter_application_1/app/modules/leaderboard/controller/leaderboard_controller.dart';
+import 'package:flutter_application_1/app/modules/home/bindings/home_binding.dart';
+import 'package:flutter_application_1/app/modules/leaderboard/bindings/leaderboard_binding.dart';
 import 'package:flutter_application_1/app/modules/leaderboard/views/leaderboard_views.dart';
-import 'package:flutter_application_1/app/modules/quiz/controller/quiz_controller.dart';
+import 'package:flutter_application_1/app/modules/quiz/binding/quiz_binding.dart';
 import 'package:flutter_application_1/app/modules/quiz/view/quiz_view.dart';
-import 'package:flutter_application_1/app/modules/result_page/controller/result_controller.dart';
+import 'package:flutter_application_1/app/modules/result_page/bindings/result_binding.dart';
 import 'package:flutter_application_1/app/modules/result_page/views/result_view.dart';
-import 'package:get/get.dart'; // ✅ tambahkan ini
+import 'package:get/get.dart';
 
 import 'package:flutter_application_1/SignIn_page.dart';
 import 'package:flutter_application_1/registe_page.dart';
 
-// kalau sudah buat folder GetX (controllers, views, bindings)
-import 'package:flutter_application_1/app/modules/home/bindings/home_binding.dart';
+// Hapus import controller yang tidak perlu untuk manual put
 import 'package:flutter_application_1/app/modules/home/views/home_view.dart';
 
 void main() {
-  Get.put(HomeController());
-  Get.put(ResultController());
-
-  Get.put(LeaderboardController());
-  Get.put(QuizController());
+  // ✅ HAPUS SEMUA Get.put() DI SINI - biarkan binding yang handle
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
 
@@ -33,25 +29,39 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // ✅ ubah dari MaterialApp → GetMaterialApp
       debugShowCheckedModeBanner: false,
-      initialBinding: HomeBinding(), // ✅ supaya controller otomatis aktif
-      home: const SplashScreen(), // tetap mulai dari splash
+      // ✅ HAPUS initialBinding atau ganti dengan Binding yang tepat
+      // initialBinding: HomeBinding(),
+      home: const SplashScreen(),
       getPages: [
         GetPage(name: '/signin', page: () => const SigninPage()),
         GetPage(name: '/register', page: () => const RegistePage()),
         GetPage(
           name: '/home',
           page: () => const HomeView(),
-        ), // ✅ pakai GetX Home
+          binding: HomeBinding(), // ✅ pindahkan binding ke sini
+        ),
         GetPage(
           name: '/bottomnav',
           page: () => const BottomNavView(),
           binding: BottomNavBinding(),
         ),
-        // GetPage(name: '/quiz', page: () => QuizView()),
-        GetPage(name: '/result', page: () => ResultPage()),
-        GetPage(name: '/leaderboard', page: () => const LeaderboardView()),
+        // ✅ TAMBAHKAN QuizView yang missing
+        GetPage(
+          name: '/quiz',
+          page: () => const QuizView(categoryName:),
+          binding: QuizBinding(), // Pastikan buat QuizBinding juga
+        ),
+        GetPage(
+          name: '/result',
+          page: () => const ResultPage(),
+          binding: ResultBinding(), // Buat Binding untuk Result
+        ),
+        GetPage(
+          name: '/leaderboard',
+          page: () => const LeaderboardView(),
+          binding: LeaderboardBinding(), // Buat Binding untuk Leaderboard
+        ),
       ],
     );
   }
@@ -69,7 +79,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      // ✅ Ganti navigator biasa → GetX navigation
+      // ✅ Gunakan offAllNamed dengan proper route
       Get.offAllNamed('/signin');
     });
   }

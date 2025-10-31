@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:flutter_application_1/app/modules/quiz/controller/quiz_controller.dart';
+import '../controller/result_controller.dart';
 
-class QuizBinding extends Bindings {
+class ResultBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => QuizController());
+    Get.lazyPut<ResultController>(() => ResultController());
   }
 }
