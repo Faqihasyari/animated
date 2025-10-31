@@ -330,9 +330,9 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 SizedBox(height: 10),
                                 Text(
-                                  controller.questionCounts.isNotEmpty
+                                  controller.questionCounts.length > index
                                       ? '${controller.questionCounts[index]} Soal'
-                                      : '...',
+                                      : '0 Soal',
                                   style: const TextStyle(
                                     color: Colors.grey,
                                     fontSize: 12,
@@ -344,9 +344,9 @@ class HomeView extends GetView<HomeController> {
                                     Image.asset('coin.jpg', scale: 2),
                                     SizedBox(width: 5),
                                     Text(
-                                      controller.quizPoints.isNotEmpty
+                                      controller.quizPoints.length > index
                                           ? '${controller.quizPoints[index]}K'
-                                          : '....',
+                                          : '0K',
                                       style: GoogleFonts.poppins(
                                         color: btnquiz,
                                         fontWeight: FontWeight.w500,
