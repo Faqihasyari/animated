@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/modules/quiz/controller/quiz_controller.dart';
+import 'package:flutter_application_1/app/modules/result_page/controller/result_controller.dart';
 import 'package:flutter_application_1/app/modules/result_page/views/result_view.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/color.dart';
@@ -134,6 +135,7 @@ class QuizView extends GetView<QuizController> {
                         return GestureDetector(
                           onTap: () {
                             controller.selectedAnswerIndex.value = index;
+                            controller.checkAnswer(index);
                           },
                           child: Container(
                             margin: const EdgeInsets.symmetric(
@@ -205,7 +207,46 @@ class QuizView extends GetView<QuizController> {
                           onPressed:
                               controller.selectedAnswerIndex.value == null
                               ? null
-                              : controller.nextQuestion,
+                              : () {
+                                  final current =
+                                      controller.currentQuestionIndex.value;
+                                  final total =
+                                      controller
+                                          .quizzes[0]['questions']
+                                          ?.length ??
+                                      0;
+
+                                  if (total == 0) {
+                                    Get.snackbar(
+                                      "Error",
+                                      "Soal belum dimuat dengan benar",
+                                    );
+                                    return;
+                                  }
+
+                                  if (current == total - 1) {
+                                    // Pastikan controller result tidak duplikat
+                                    if (!Get.isRegistered<ResultController>()) {
+                                      Get.put(ResultController());
+                                    }
+
+                                    // Set hasil kuis
+                                    final resultController =
+                                        Get.find<ResultController>();
+                                    resultController.setResult(
+                                      correct: controller.correctAnswers.value,
+                                      total: total,
+                                      name: controller.userName.value,
+                                      rank: controller.userRank.value,
+                                    );
+
+                                    // Ganti halaman kuis dengan halaman hasil
+                                    Get.off(() => const ResultPage());
+                                  } else {
+                                    controller.currentQuestionIndex.value++;
+                                    controller.selectedAnswerIndex.value = null;
+                                  }
+                                },
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size(350, 60),
                             backgroundColor: btnquiz,
@@ -213,38 +254,28 @@ class QuizView extends GetView<QuizController> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          child: GestureDetector(
-                            onTap: () {
-                              if (controller.currentQuestionIndex.value ==
-                                  controller.quizzes[0]['questions'].length -
-                                      1) {
-                                Get.to(ResultPage());
-                              } else {
-                                controller.currentQuestionIndex.value++;
-                              }
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Obx(
-                                  () => Text(
-                                    controller.currentQuestionIndex.value ==
-                                            controller
-                                                    .quizzes[0]['questions']
-                                                    .length -
-                                                1
-                                        ? 'Finish'
-                                        : 'Next',
-                                    style: const TextStyle(color: Colors.white),
-                                  ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Obx(
+                                () => Text(
+                                  controller.currentQuestionIndex.value ==
+                                          (controller
+                                                      .quizzes[0]['questions']
+                                                      ?.length ??
+                                                  0) -
+                                              1
+                                      ? 'Finish'
+                                      : 'Next',
+                                  style: const TextStyle(color: Colors.white),
                                 ),
-                                Icon(
-                                  MdiIcons.chevronDoubleRight,
-                                  color: Colors.white,
-                                  size: 30,
-                                ),
-                              ],
-                            ),
+                              ),
+                              Icon(
+                                MdiIcons.chevronDoubleRight,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                            ],
                           ),
                         ),
                       ),

@@ -8,9 +8,21 @@ class QuizController extends GetxController {
   var selectedAnswers = <int?>[].obs;
   var currentQuestionIndex = 0.obs;
   var selectedAnswerIndex = Rxn<int>();
+  var correctAnswers = 0.obs;
+var userName = ''.obs; // dari login user
+var userRank = 0.obs;  // bisa dari leaderboard, kalau ada
+
 
   // Progress
   var progress = 0.0.obs;
+
+  void checkAnswer(int selectedIndex) {
+  final correctIndex = quizzes[0]['questions'][currentQuestionIndex.value]['correct_index'];
+  if (selectedIndex == correctIndex) {
+    correctAnswers.value++;
+  }
+}
+
 
   // Load quiz berdasarkan kategori
   Future<void> fetchQuizzes(String categoryName) async {
