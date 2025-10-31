@@ -15,6 +15,22 @@ class QuizController extends GetxController {
   // Progress
   var progress = 0.0.obs;
 
+  @override
+  void onInit() {
+    super.onInit();
+    _loadQuizFromArguments();
+  }
+
+  void _loadQuizFromArguments() {
+    // ✅ Ambil categoryName dari arguments
+    final categoryName = Get.arguments as String?;
+    if (categoryName != null) {
+      fetchQuizzes(categoryName);
+    } else {
+      print("Error: Category name not provided in arguments");
+    }
+  }
+
   void checkAnswer(int selectedIndex) {
     // Hanya proses jika belum memilih sebelumnya
     if (selectedAnswerIndex.value != null) return;
@@ -53,6 +69,8 @@ class QuizController extends GetxController {
       'Technology': 'Technology',
       'Quiz Sejarah': 'Sejarah',
     };
+
+    
 
     String categoryToSend = categoryMap[categoryName] ?? categoryName;
 

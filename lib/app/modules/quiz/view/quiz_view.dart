@@ -8,13 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class QuizView extends GetView<QuizController> {
-  final String categoryName;
-  const QuizView({super.key, required this.categoryName});
+  const QuizView({super.key});
 
   @override
   Widget build(BuildContext context) {
     // Memanggil data quiz
-    controller.fetchQuizzes(categoryName);
 
     return Scaffold(
       body: Obx(() {
@@ -27,7 +25,7 @@ class QuizView extends GetView<QuizController> {
           return Scaffold(
             body: Center(
               child: Text(
-                'Tidak ada pertanyaan di kategori $categoryName',
+                'Tidak ada pertanyaan di kategori ini',
                 style: const TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),

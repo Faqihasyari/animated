@@ -49,7 +49,7 @@ class MainApp extends StatelessWidget {
         // ✅ TAMBAHKAN QuizView yang missing
         GetPage(
           name: '/quiz',
-          page: () => const QuizView(categoryName:),
+          page: () => const QuizView(),
           binding: QuizBinding(), // Pastikan buat QuizBinding juga
         ),
         GetPage(
