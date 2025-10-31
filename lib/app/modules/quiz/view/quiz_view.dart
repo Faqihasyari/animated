@@ -199,6 +199,7 @@ class QuizView extends GetView<QuizController> {
                         );
                       }).toList(),
                       const Spacer(),
+                      // FIX ERROR MULTIPLE AND GET CORRECT ANSWER CORRECT
                       Padding(
                         padding: const EdgeInsets.all(14.0),
                         child: ElevatedButton(
@@ -206,7 +207,7 @@ class QuizView extends GetView<QuizController> {
                               controller.selectedAnswerIndex.value == null
                               ? null
                               : () => controller
-                                    .nextQuestion(), // ✅ HANYA INI SAJA
+                                    .nextQuestion(),
                           style: ElevatedButton.styleFrom(
                             minimumSize: const Size(350, 60),
                             backgroundColor: btnquiz,
