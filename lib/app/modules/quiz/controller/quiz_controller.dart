@@ -70,8 +70,6 @@ class QuizController extends GetxController {
       'Quiz Sejarah': 'Sejarah',
     };
 
-    
-
     String categoryToSend = categoryMap[categoryName] ?? categoryName;
 
     final response = await http.get(
@@ -110,91 +108,93 @@ class QuizController extends GetxController {
 
   // Kirim hasil quiz
   Future<void> submitQuiz() async {
-  try {
-    // ✅ Validasi data sebelum submit
-    if (quizzes.isEmpty || quizzes[0]['questions'] == null) {
-      print("No quiz data available");
-      return;
-    }
+    try {
+      // ✅ Validasi data sebelum submit
+      if (quizzes.isEmpty || quizzes[0]['questions'] == null) {
+        print("No quiz data available");
+        return;
+      }
 
-    final prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString('token');
-    final userName = prefs.getString('user_name') ?? 'User';
+      final prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString('token');
+      final userName = prefs.getString('user_name') ?? 'User';
 
-    if (token == null) {
-      print("User not logged in");
-      Get.offAllNamed('/signin');
-      return;
-    }
+      if (token == null) {
+        print("User not logged in");
+        Get.offAllNamed('/signin');
+        return;
+      }
 
-    // ✅ Hitung score dengan validasi
-    int correctCount = 0;
-    final questions = quizzes[0]['questions'];
-    
-    for (int i = 0; i < questions.length; i++) {
-      if (i < selectedAnswers.length && selectedAnswers[i] != null) {
-        final answers = questions[i]['answers'] as List;
-        final correctIndex = answers.indexWhere((a) => 
-            a['is_correct'] == 1 || a['is_correct'] == true);
-        
-        if (correctIndex != -1 && selectedAnswers[i] == correctIndex) {
-          correctCount++;
+      // ✅ Hitung score dengan validasi
+      int correctCount = 0;
+      final questions = quizzes[0]['questions'];
+
+      for (int i = 0; i < questions.length; i++) {
+        if (i < selectedAnswers.length && selectedAnswers[i] != null) {
+          final answers = questions[i]['answers'] as List;
+          final correctIndex = answers.indexWhere(
+            (a) => a['is_correct'] == 1 || a['is_correct'] == true,
+          );
+
+          if (correctIndex != -1 && selectedAnswers[i] == correctIndex) {
+            correctCount++;
+          }
         }
       }
+
+      // ✅ Submit ke API dengan timeout
+      final response = await http
+          .post(
+            Uri.parse('http://192.168.101.231:8000/api/submit-quiz'),
+            headers: {
+              'Authorization': 'Bearer $token',
+              'Content-Type': 'application/json',
+            },
+            body: jsonEncode({
+              'score': correctCount,
+              'total': questions.length,
+              'category': quizzes[0]['title'],
+            }),
+          )
+          .timeout(const Duration(seconds: 10));
+
+      int userRank = 0;
+      if (response.statusCode == 200) {
+        final result = jsonDecode(response.body);
+        userRank = result['rank'] ?? 0;
+        print('✅ Quiz submitted successfully. Rank: $userRank');
+      } else {
+        print('❌ Failed to submit quiz: ${response.statusCode}');
+        Get.snackbar('Error', 'Gagal mengirim hasil quiz');
+      }
+
+      // ✅ NAVIGASI YANG AMAN - Clear stack dengan offAllNamed
+      Get.offAllNamed(
+        '/result',
+        arguments: {
+          'correctAnswers': correctCount,
+          'totalQuestions': questions.length,
+          'userName': userName,
+          'userRank': userRank,
+        },
+      );
+    } catch (e) {
+      print('⚠️ Error submitting quiz: $e');
+
+      // ✅ Fallback navigation dengan data lokal jika API error
+      final questions = quizzes.isNotEmpty ? quizzes[0]['questions'] : [];
+      Get.offAllNamed(
+        '/result',
+        arguments: {
+          'correctAnswers': correctAnswers.value,
+          'totalQuestions': questions.length,
+          'userName': 'User',
+          'userRank': 0,
+        },
+      );
+    } finally {
+      // ✅ Optional: Reset quiz state setelah submit
+      // resetQuiz();
     }
-
-    // ✅ Submit ke API dengan timeout
-    final response = await http.post(
-      Uri.parse('http://192.168.101.231:8000/api/submit-quiz'),
-      headers: {
-        'Authorization': 'Bearer $token',
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
-        'score': correctCount,
-        'total': questions.length,
-        'category': quizzes[0]['title'],
-      }),
-    ).timeout(const Duration(seconds: 10));
-
-    int userRank = 0;
-    if (response.statusCode == 200) {
-      final result = jsonDecode(response.body);
-      userRank = result['rank'] ?? 0;
-      print('✅ Quiz submitted successfully. Rank: $userRank');
-    } else {
-      print('❌ Failed to submit quiz: ${response.statusCode}');
-      Get.snackbar('Error', 'Gagal mengirim hasil quiz');
-    }
-
-    // ✅ NAVIGASI YANG AMAN - Clear stack dengan offAllNamed
-    Get.offAllNamed(
-      '/result',
-      arguments: {
-        'correctAnswers': correctCount,
-        'totalQuestions': questions.length,
-        'userName': userName,
-        'userRank': userRank,
-      },
-    );
-
-  } catch (e) {
-    print('⚠️ Error submitting quiz: $e');
-    
-    // ✅ Fallback navigation dengan data lokal jika API error
-    final questions = quizzes.isNotEmpty ? quizzes[0]['questions'] : [];
-    Get.offAllNamed(
-      '/result',
-      arguments: {
-        'correctAnswers': correctAnswers.value,
-        'totalQuestions': questions.length,
-        'userName': 'User',
-        'userRank': 0,
-      },
-    );
-  } finally {
-    // ✅ Optional: Reset quiz state setelah submit
-    // resetQuiz();
   }
-}
 }

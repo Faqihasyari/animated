@@ -31,7 +31,7 @@ class MainApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       // ✅ HAPUS initialBinding atau ganti dengan Binding yang tepat
-      // initialBinding: HomeBinding(),
+      initialBinding: HomeBinding(),
       home: const SplashScreen(),
       getPages: [
         GetPage(name: '/signin', page: () => const SigninPage()),
