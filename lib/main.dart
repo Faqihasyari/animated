@@ -9,6 +9,8 @@ import 'package:flutter_application_1/app/modules/quiz/binding/quiz_binding.dart
 import 'package:flutter_application_1/app/modules/quiz/view/quiz_view.dart';
 import 'package:flutter_application_1/app/modules/result_page/bindings/result_binding.dart';
 import 'package:flutter_application_1/app/modules/result_page/views/result_view.dart';
+import 'package:flutter_application_1/app/modules/sign_in/bindings/signin_binding.dart';
+import 'package:flutter_application_1/app/modules/sign_in/views/signin_view.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_application_1/SignIn_page.dart';
@@ -34,7 +36,11 @@ class MainApp extends StatelessWidget {
       initialBinding: HomeBinding(),
       home: const SplashScreen(),
       getPages: [
-        GetPage(name: '/signin', page: () => const SigninPage()),
+        GetPage(
+          name: '/signin',
+          page: () => const SigninView(),
+          binding: SigninBinding(),
+        ),
         GetPage(name: '/register', page: () => const RegistePage()),
         GetPage(
           name: '/home',
