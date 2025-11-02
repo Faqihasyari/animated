@@ -25,10 +25,14 @@ It allows users to test their knowledge across various categories, track progres
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Flutter, Laravel 
-- **Language:** Dart  
-- **Storage:** SharedPreferences  
-- **Fonts:** Google Fonts  
-- **API Requests:** HTTP package  
+### Frontend (Flutter)
+- **Framework:** Flutter 3.0+
+- **State Management:** GetX
+- **Navigation:** GetX Navigation
+- **HTTP Client:** HTTP
+- **Local Storage:** SharedPreferences
+- **Styling:** Material Design with Custom Themes
+- **Fonts:** Google Fonts (Poppins)
+- **Icons:** Material Design Icons
 
 ---
