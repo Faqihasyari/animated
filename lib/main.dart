@@ -7,6 +7,8 @@ import 'package:flutter_application_1/app/modules/leaderboard/bindings/leaderboa
 import 'package:flutter_application_1/app/modules/leaderboard/views/leaderboard_views.dart';
 import 'package:flutter_application_1/app/modules/quiz/binding/quiz_binding.dart';
 import 'package:flutter_application_1/app/modules/quiz/view/quiz_view.dart';
+import 'package:flutter_application_1/app/modules/register/bindings/register_binding.dart';
+import 'package:flutter_application_1/app/modules/register/views/register_view.dart';
 import 'package:flutter_application_1/app/modules/result_page/bindings/result_binding.dart';
 import 'package:flutter_application_1/app/modules/result_page/views/result_view.dart';
 import 'package:flutter_application_1/app/modules/sign_in/bindings/signin_binding.dart';
@@ -41,7 +43,11 @@ class MainApp extends StatelessWidget {
           page: () => const SigninView(),
           binding: SigninBinding(),
         ),
-        GetPage(name: '/register', page: () => const RegistePage()),
+        GetPage(
+          name: '/register',
+          page: () => const RegisterView(),
+          binding: RegisterBinding(),
+        ),
         GetPage(
           name: '/home',
           page: () => const HomeView(),
