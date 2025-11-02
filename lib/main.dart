@@ -15,9 +15,6 @@ import 'package:flutter_application_1/app/modules/sign_in/bindings/signin_bindin
 import 'package:flutter_application_1/app/modules/sign_in/views/signin_view.dart';
 import 'package:get/get.dart';
 
-import 'package:flutter_application_1/SignIn_page.dart';
-import 'package:flutter_application_1/registe_page.dart';
-
 // Hapus import controller yang tidak perlu untuk manual put
 import 'package:flutter_application_1/app/modules/home/views/home_view.dart';
 
