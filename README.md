@@ -36,3 +36,14 @@ It allows users to test their knowledge across various categories, track progres
 - **Icons:** Material Design Icons
 
 ---
+
+### Backend
+- **Framework:** Laravel 12
+- **Authentication:** Laravel Sanctum
+- **Database:** MySQL
+- **API:** RESTful API
+
+### Development Tools
+- **IDE:** Visual Studio Code
+- **Version Control:** Git
+- **Package Manager:** Pub
