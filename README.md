@@ -15,7 +15,11 @@ It allows users to test their knowledge across various categories, track progres
 - ⏱️ Question-by-question navigation
 - ✅ Instant answer feedback
 
----
+### 🎨 User Experience
+- ✨ Modern, responsive UI with gradient designs
+- 🎯 Intuitive navigation with GetX
+- 📱 Mobile-optimized interface
+- 🎪 Engaging visual elements and animations
 
 ---
 
