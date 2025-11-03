@@ -48,22 +48,24 @@ class LeaderboardView extends GetView<LeaderboardController> {
                 ),
                 child: Stack(
                   children: [
-                    AnimatedAlign(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeInOut,
-                      alignment: controller.selectedIndex.value == 0
-                          ? Alignment.centerLeft
-                          : controller.selectedIndex.value == 1
-                          ? Alignment.center
-                          : Alignment.centerRight,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 7),
-                        child: Container(
-                          height: 45,
-                          width: MediaQuery.of(context).size.width / 4,
-                          decoration: BoxDecoration(
-                            color: icon,
-                            borderRadius: BorderRadius.circular(10),
+                    Obx(
+                      () => AnimatedAlign(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                        alignment: controller.selectedIndex.value == 0
+                            ? Alignment.centerLeft
+                            : controller.selectedIndex.value == 1
+                            ? Alignment.center
+                            : Alignment.centerRight,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          child: Container(
+                            height: 45,
+                            width: MediaQuery.of(context).size.width / 4,
+                            decoration: BoxDecoration(
+                              color: icon,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
                           ),
                         ),
                       ),
