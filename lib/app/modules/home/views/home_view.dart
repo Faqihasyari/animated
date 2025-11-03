@@ -126,7 +126,7 @@ class HomeView extends GetView<HomeController> {
                   Container(
                     width: double.infinity,
                     height: 170,
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                       color: containerColor.withOpacity(0.25),
                       borderRadius: BorderRadius.circular(13),
@@ -287,13 +287,6 @@ class HomeView extends GetView<HomeController> {
                       return GestureDetector(
                         onTap: () {
                           Get.toNamed('/quiz', arguments: nameList2[index]);
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) =>
-                          //         QuizView(categoryName: nameList2[index]),
-                          //   ),
-                          // );
                         },
 
                         child: Container(
