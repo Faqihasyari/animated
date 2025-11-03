@@ -1,7 +1,8 @@
-import 'package:flutter_application_1/app/modules/leaderboard/controller/leaderboard_controller.dart';
+// lib/app/modules/leaderboard/bindings/leaderboard_binding.dart
 import 'package:get/get.dart';
+import '../controller/leaderboard_controller.dart';
 
-class LeaderboardBinding extends Bindings {
+class LeaderboardBinding implements Bindings {
   @override
   void dependencies() {
     Get.lazyPut<LeaderboardController>(() => LeaderboardController());
