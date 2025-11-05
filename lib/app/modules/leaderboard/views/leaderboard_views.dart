@@ -27,13 +27,16 @@ class LeaderboardView extends GetView<LeaderboardController> {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Leaderboard',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  fontSize: 25,
+              Center(
+                child: Text(
+                  'Leaderboard',
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: 25,
+                  ),
                 ),
               ),
               SizedBox(height: 30),
@@ -90,6 +93,12 @@ class LeaderboardView extends GetView<LeaderboardController> {
                   ],
                 ),
               ),
+              Text('ajskhdg'),
+              Row(
+                children: [
+                  CircleAvatar()
+                ],
+              )
             ],
           ),
         ),
