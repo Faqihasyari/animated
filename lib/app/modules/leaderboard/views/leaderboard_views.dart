@@ -96,23 +96,15 @@ class LeaderboardView extends GetView<LeaderboardController> {
               Text('ajskhdg'),
               Row(
                 children: [
-                  Column(
-                    children: [
-                      CircleAvatar(),
-                    ],
+                  SizedBox(
+                    height: 400,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [CircleAvatar(backgroundColor: Colors.black)],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      CircleAvatar(),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(),
-                    ],
-                  )
                 ],
-              )
+              ),
             ],
           ),
         ),
