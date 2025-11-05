@@ -93,20 +93,31 @@ class LeaderboardView extends GetView<LeaderboardController> {
                   ],
                 ),
               ),
-              Text('ajskhdg'),
               Row(
+                spacing: 50,
                 children: [
                   SizedBox(
                     height: 400,
-                    child: CircleAvatar(backgroundColor: Colors.black),
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.black,
+                    ),
                   ),
                   SizedBox(
                     height: 400,
-                    child: CircleAvatar(backgroundColor: Colors.black),
+                    child: CircleAvatar(
+                      radius: 50,
+
+                      backgroundColor: Colors.black,
+                    ),
                   ),
                   SizedBox(
                     height: 400,
-                    child: CircleAvatar(backgroundColor: Colors.black),
+                    child: CircleAvatar(
+                      radius: 50,
+
+                      backgroundColor: Colors.black,
+                    ),
                   ),
                 ],
               ),
