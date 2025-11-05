@@ -14,14 +14,14 @@ class LeaderboardView extends GetView<LeaderboardController> {
         decoration: BoxDecoration(
           gradient: RadialGradient(
             colors: [
-              radialGradient, // warna atas
-              radialGradient2, // warna bawah
+              radialGradient,
+              radialGradient2,
               radialGradient3,
               radialGradient4,
             ],
-            center: Alignment.center, // posisi pusat gradient
-            radius: 1.7, // semakin besar nilainya, semakin luas gradient-nya
-            focal: Alignment.center, // titik fokus (opsional)
+            center: Alignment.center,
+            radius: 1.7,
+            focal: Alignment.center,
           ),
         ),
         child: Padding(
@@ -45,6 +45,15 @@ class LeaderboardView extends GetView<LeaderboardController> {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+
+                      blurRadius: 10,
+                      spreadRadius: 1,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
                 ),
                 child: Stack(
                   children: [
