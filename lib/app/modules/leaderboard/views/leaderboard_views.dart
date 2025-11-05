@@ -98,10 +98,15 @@ class LeaderboardView extends GetView<LeaderboardController> {
                 children: [
                   SizedBox(
                     height: 400,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [CircleAvatar(backgroundColor: Colors.black)],
-                    ),
+                    child: CircleAvatar(backgroundColor: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 400,
+                    child: CircleAvatar(backgroundColor: Colors.black),
+                  ),
+                  SizedBox(
+                    height: 400,
+                    child: CircleAvatar(backgroundColor: Colors.black),
                   ),
                 ],
               ),
