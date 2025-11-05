@@ -96,7 +96,21 @@ class LeaderboardView extends GetView<LeaderboardController> {
               Text('ajskhdg'),
               Row(
                 children: [
-                  CircleAvatar()
+                  Column(
+                    children: [
+                      CircleAvatar(),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      CircleAvatar(),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      CircleAvatar(),
+                    ],
+                  )
                 ],
               )
             ],
