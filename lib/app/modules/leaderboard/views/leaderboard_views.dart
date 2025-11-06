@@ -151,6 +151,82 @@ class LeaderboardView extends GetView<LeaderboardController> {
     );
   }
 
+  
+
+  // Widget untuk item podium (top 3)
+  Widget _buildPodiumItem({
+    required int rank,
+    required String name,
+    required String score,
+    required Color avatarColor,
+    required double height,
+  }) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        // Rank Number
+        Container(
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              '$rank',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 10),
+
+        // Podium Stand
+        Container(
+          width: 80,
+          height: height,
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.8),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 25,
+                backgroundColor: avatarColor,
+                child: Icon(Icons.person, color: Colors.white),
+              ),
+              SizedBox(height: 8),
+              Text(
+                name,
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+              ),
+              Text(
+                score,
+                style: GoogleFonts.poppins(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.grey[700],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
   // Widget untuk tab navigation
   Widget _buildTextOption(String text, int index) {
     return GestureDetector(
