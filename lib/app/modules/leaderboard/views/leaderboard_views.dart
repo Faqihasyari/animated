@@ -93,13 +93,56 @@ class LeaderboardView extends GetView<LeaderboardController> {
                   ],
                 ),
               ),
-              Row(
-                spacing: 50,
-                children: [
-                  CircleAvatar(radius: 50, backgroundColor: Colors.black),
-                  CircleAvatar(radius: 50, backgroundColor: Colors.black),
-                  CircleAvatar(radius: 50, backgroundColor: Colors.black),
-                ],
+             // Podium Section - Top 3
+              Container(
+                height: 200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // Posisi 2 (Kiri)
+                    _buildPodiumItem(
+                      rank: 2,
+                      name: 'Jamal',
+                      score: '91.213',
+                      avatarColor: Colors.grey[400]!,
+                      height: 120,
+                    ),
+
+                    // Posisi 1 (Tengah - Tertinggi)
+                    _buildPodiumItem(
+                      rank: 1,
+                      name: 'Udin',
+                      score: '95.456',
+                      avatarColor: Colors.amber,
+                      height: 160,
+                    ),
+
+                    // Posisi 3 (Kanan)
+                    _buildPodiumItem(
+                      rank: 3,
+                      name: 'Budi',
+                      score: '88.876',
+                      avatarColor: Colors.brown[400]!,
+                      height: 100,
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 30),
+
+              // List Peringkat 4-8
+              Expanded(
+                child: ListView(
+                  children: [
+                    _buildRankItem(4, 'Agus', '86.785'),
+                    _buildRankItem(5, 'Sokid', '82.987'),
+                    _buildRankItem(6, 'Joko', '80.123'),
+                    _buildRankItem(7, 'Rina', '78.456'),
+                    _buildRankItem(8, 'Dewi', '75.789'),
+                  ],
+                ),
               ),
             ],
           ),
