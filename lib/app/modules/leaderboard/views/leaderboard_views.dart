@@ -93,7 +93,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                   ],
                 ),
               ),
-             // Podium Section - Top 3
+              // Podium Section - Top 3
               Container(
                 height: 200,
                 child: Row(
@@ -172,10 +172,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
             child: Center(
               child: Text(
                 '$rank',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
               ),
             ),
           ),
@@ -203,7 +200,6 @@ class LeaderboardView extends GetView<LeaderboardController> {
     );
   }
 
-
   // Widget untuk item podium (top 3)
   Widget _buildPodiumItem({
     required int rank,
@@ -226,10 +222,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
           child: Center(
             child: Text(
               '$rank',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
           ),
         ),
