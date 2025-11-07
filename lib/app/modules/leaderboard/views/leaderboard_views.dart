@@ -217,6 +217,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
           height: 30,
           decoration: BoxDecoration(
             border: Border.all(
+              // ternary operator
               color: rank == 1
                   ? Colors.yellow
                   : rank == 2
