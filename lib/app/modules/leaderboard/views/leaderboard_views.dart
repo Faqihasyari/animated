@@ -166,6 +166,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
             width: 30,
             height: 30,
             decoration: BoxDecoration(
+              border: Border.all(color: Colors.yellow),
               color: Colors.white,
               shape: BoxShape.circle,
             ),
