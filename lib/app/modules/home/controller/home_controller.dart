@@ -17,7 +17,7 @@ class HomeController extends GetxController {
   var questionCounts = <int>[].obs;
   var quizPoints = <int>[].obs;
 
-  final String baseUrl = 'http://192.168.101.231:8000/api';
+  final String baseUrl = 'http://192.168.53.231:8000/api';
 
   @override
   void onInit() {
@@ -71,7 +71,7 @@ class HomeController extends GetxController {
       print("🔍 Fetching quizzes from API...");
 
       final response = await http.get(
-        Uri.parse('http://192.168.101.231:8000/api/quizzes'),
+        Uri.parse('http://192.168.53.231:8000/api/quizzes'),
         headers: {'Content-Type': 'application/json'},
       );
 

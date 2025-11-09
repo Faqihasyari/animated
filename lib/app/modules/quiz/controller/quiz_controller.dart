@@ -74,7 +74,7 @@ class QuizController extends GetxController {
 
     final response = await http.get(
       Uri.parse(
-        'http://192.168.101.231:8000/api/quizzes?category=$categoryToSend',
+        'http://192.168.53.231:8000/api/quizzes?category=$categoryToSend',
       ),
       headers: {'Authorization': 'Bearer $token'},
     );
@@ -145,7 +145,7 @@ class QuizController extends GetxController {
       // ✅ Submit ke API dengan timeout
       final response = await http
           .post(
-            Uri.parse('http://192.168.101.231:8000/api/submit-quiz'),
+            Uri.parse('http://192.168.53.231:8000/api/submit-quiz'),
             headers: {
               'Authorization': 'Bearer $token',
               'Content-Type': 'application/json',
