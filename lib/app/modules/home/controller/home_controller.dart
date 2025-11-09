@@ -71,7 +71,7 @@ class HomeController extends GetxController {
       print("🔍 Fetching quizzes from API...");
 
       final response = await http.get(
-        Uri.parse('http://19268.53.231:8000/api/quizzes'),
+        Uri.parse('http://192.168.53.231:8000/api/quizzes'),
         headers: {'Content-Type': 'application/json'},
       );
 
