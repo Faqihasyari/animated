@@ -3,8 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  static const baseUrl =
-      'http://192.168.53.231/api'; 
+  static const baseUrl = 'http://192.168.53.231:8000/api';
 
   // 🔹 function for Register
   static Future<http.Response> register(
