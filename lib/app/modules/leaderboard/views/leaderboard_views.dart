@@ -244,7 +244,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
           width: 80,
           height: height,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.8),
+            color: icon.withOpacity(0.5),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),
               topRight: Radius.circular(10),
