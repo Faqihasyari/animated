@@ -130,8 +130,6 @@ class LeaderboardView extends GetView<LeaderboardController> {
                 ),
               ),
 
-              SizedBox(height: 30),
-
               // List Peringkat 4-8
               Expanded(
                 child: ListView(
