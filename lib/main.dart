@@ -26,14 +26,14 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       // ✅ HAPUS initialBinding atau ganti dengan Binding yang tepat
       initialBinding: HomeBinding(),
-      home: const SplashScreen(),
+      home: const BottomNavView(),
       getPages: [
         GetPage(
           name: '/signin',

@@ -240,7 +240,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
 
         // Podium Stand
         Container(
-          width: 80,
+          width: 100,
           height: height,
           decoration: BoxDecoration(
             color: icon.withOpacity(0.5),
