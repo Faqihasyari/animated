@@ -97,7 +97,8 @@ class LeaderboardView extends GetView<LeaderboardController> {
               Container(
                 height: 200,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  spacing: 10,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     // Posisi 2 (Kiri)
