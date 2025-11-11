@@ -161,15 +161,19 @@ class LeaderboardView extends GetView<LeaderboardController> {
       ),
       child: Row(
         children: [
-          Center(
-            child: Text(
-              '$rank',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+          Container(
+            width: 30,
+            height: 65,
+            decoration: BoxDecoration(color: Colors.transparent),
+            child: Center(
+              child: Text(
+                '$rank',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+              ),
             ),
           ),
           SizedBox(width: 15),
-          CircleAvatar(backgroundColor: Colors.grey),
-          SizedBox(width: 15),
+          CircleAvatar(radius: 30, backgroundColor: Colors.black),
           Expanded(
             child: Text(
               name,
