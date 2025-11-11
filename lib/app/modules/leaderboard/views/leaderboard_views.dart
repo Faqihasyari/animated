@@ -163,7 +163,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
         children: [
           Container(
             width: 30,
-            height: 30,
+            height: 65,
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
@@ -240,7 +240,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
 
         // Podium Stand
         Container(
-          width: 100,
+          width: 130,
           height: height,
           decoration: BoxDecoration(
             color: icon.withOpacity(0.5),
