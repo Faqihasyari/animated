@@ -174,6 +174,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
           ),
           SizedBox(width: 15),
           CircleAvatar(radius: 30, backgroundColor: Colors.black),
+          SizedBox(width: 15),
           Expanded(
             child: Text(
               name,
