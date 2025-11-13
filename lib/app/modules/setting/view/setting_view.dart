@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/modules/setting/controller/view_controller.dart';
 import 'package:flutter_application_1/color.dart';
+import 'package:get/get.dart';
 
-class SettingView extends StatefulWidget {
+class SettingView extends GetView<LogoutController> {
   const SettingView({super.key});
 
-  @override
-  State<SettingView> createState() => _SettingViewState();
-}
-
-class _SettingViewState extends State<SettingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
