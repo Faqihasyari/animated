@@ -4,7 +4,9 @@ import 'package:flutter_application_1/color.dart';
 import 'package:get/get.dart';
 
 class SettingView extends GetView<LogoutController> {
-  const SettingView({super.key});
+  SettingView({super.key});
+
+  final LogoutController logoutController = Get.put(LogoutController());
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,9 @@ class SettingView extends GetView<LogoutController> {
               borderRadius: BorderRadiusGeometry.circular(10),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            controller.logout();
+          },
           child: Text("LOGOUT"),
         ),
       ),

@@ -14,10 +14,10 @@ class BottomNavView extends GetView<BottomNavController> {
   @override
   Widget build(BuildContext context) {
     // daftar halaman
-    final List<Widget> pages = const [
-      HomeView(),
-      LeaderboardView(),
-      Center(child: Text("🔖 Bookmark")),
+    final List<Widget> pages = [
+      const HomeView(),
+      const LeaderboardView(),
+      const Center(child: Text("🔖 Bookmark")),
       SettingView(),
     ];
 

@@ -74,8 +74,8 @@ class MainApp extends StatelessWidget {
           binding: LeaderboardBinding(), 
         ),
          GetPage(
-          name: '/leaderboard',
-          page: () => const SettingView(),
+          name: '/setting',
+          page: () => SettingView(),
           binding: SettingBinding(), 
         ),
       ],
