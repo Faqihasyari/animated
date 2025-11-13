@@ -11,6 +11,8 @@ import 'package:flutter_application_1/app/modules/register/bindings/register_bin
 import 'package:flutter_application_1/app/modules/register/views/register_view.dart';
 import 'package:flutter_application_1/app/modules/result_page/bindings/result_binding.dart';
 import 'package:flutter_application_1/app/modules/result_page/views/result_view.dart';
+import 'package:flutter_application_1/app/modules/setting/binding/setting_binding.dart';
+import 'package:flutter_application_1/app/modules/setting/view/setting_view.dart';
 import 'package:flutter_application_1/app/modules/sign_in/bindings/signin_binding.dart';
 import 'package:flutter_application_1/app/modules/sign_in/views/signin_view.dart';
 import 'package:get/get.dart';
@@ -69,12 +71,12 @@ class MainApp extends StatelessWidget {
         GetPage(
           name: '/leaderboard',
           page: () => const LeaderboardView(),
-          binding: LeaderboardBinding(), // Buat Binding untuk Leaderboard
+          binding: LeaderboardBinding(), 
         ),
          GetPage(
           name: '/leaderboard',
-          page: () => const Set(),
-          binding: LeaderboardBinding(), // Buat Binding untuk Leaderboard
+          page: () => const SettingView(),
+          binding: SettingBinding(), 
         ),
       ],
     );
