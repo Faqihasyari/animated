@@ -16,6 +16,7 @@ class _SettingViewState extends State<SettingView> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
             backgroundColor: btnquiz,
+            foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(10),
             ),

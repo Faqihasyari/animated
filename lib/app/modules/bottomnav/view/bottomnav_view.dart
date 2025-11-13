@@ -17,8 +17,8 @@ class BottomNavView extends GetView<BottomNavController> {
     final List<Widget> pages = const [
       HomeView(),
       LeaderboardView(),
+      Center(child: Text("🔖 Bookmark")),
       SettingView(),
-      Center(child: Text("⚙️ Pengaturan")),
     ];
 
     return Obx(
