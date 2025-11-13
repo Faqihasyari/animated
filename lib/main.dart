@@ -71,6 +71,11 @@ class MainApp extends StatelessWidget {
           page: () => const LeaderboardView(),
           binding: LeaderboardBinding(), // Buat Binding untuk Leaderboard
         ),
+         GetPage(
+          name: '/leaderboard',
+          page: () => const Set(),
+          binding: LeaderboardBinding(), // Buat Binding untuk Leaderboard
+        ),
       ],
     );
   }
