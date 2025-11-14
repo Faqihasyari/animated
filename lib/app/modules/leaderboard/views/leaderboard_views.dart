@@ -156,7 +156,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
       margin: EdgeInsets.symmetric(vertical: 5),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.2),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -181,7 +181,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
               style: GoogleFonts.poppins(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ),
@@ -189,8 +189,8 @@ class LeaderboardView extends GetView<LeaderboardController> {
             score,
             style: GoogleFonts.poppins(
               fontSize: 14,
-              fontWeight: FontWeight.w400,
-              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              color: icon,
             ),
           ),
         ],

@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: HomeBinding(),
-      home: const SplashScreen(),
+      home: const BottomNavView(),
       getPages: [
         GetPage(
           name: '/signin',
