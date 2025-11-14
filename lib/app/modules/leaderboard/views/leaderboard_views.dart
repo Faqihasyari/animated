@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/modules/leaderboard/controller/leaderboard_controller.dart';
+import 'package:flutter_application_1/app/utils/widgets/curved_clipper.dart';
 import 'package:flutter_application_1/color.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -140,18 +141,22 @@ class LeaderboardView extends GetView<LeaderboardController> {
               ),
             ),
             Expanded(
-              child: Container(
-                color: const Color.fromARGB(255, 241, 241, 241),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
-                  child: ListView(
-                    children: [
-                      _buildRankItem(4, 'Agus', '86.785'),
-                      _buildRankItem(5, 'Sokid', '82.987'),
-                      _buildRankItem(6, 'Joko', '80.123'),
-                      _buildRankItem(7, 'Rina', '78.456'),
-                      _buildRankItem(8, 'Dewi', '75.789'),
-                    ],
+              child: ClipPath(
+                clipper: CurvedClipper(curveHeight: 60),
+                child: Container(
+                  color: const Color.fromARGB(255, 241, 241, 241),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                    child: ListView(
+                      children: [
+                        SizedBox(height: 40),
+                        _buildRankItem(4, 'Agus', '86.785'),
+                        _buildRankItem(5, 'Sokid', '82.987'),
+                        _buildRankItem(6, 'Joko', '80.123'),
+                        _buildRankItem(7, 'Rina', '78.456'),
+                        _buildRankItem(8, 'Dewi', '75.789'),
+                      ],
+                    ),
                   ),
                 ),
               ),
