@@ -277,17 +277,17 @@ class LeaderboardView extends GetView<LeaderboardController> {
               Text(
                 name,
                 style: GoogleFonts.poppins(
-                  fontSize: 12,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               Text(
                 score,
                 style: GoogleFonts.poppins(
-                  fontSize: 10,
+                  fontSize: 12,
                   fontWeight: FontWeight.w400,
-                  color: Colors.grey[700],
+                  color: Colors.white,
                 ),
               ),
             ],
