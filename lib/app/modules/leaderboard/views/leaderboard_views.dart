@@ -24,127 +24,139 @@ class LeaderboardView extends GetView<LeaderboardController> {
             focal: Alignment.center,
           ),
         ),
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Text(
-                  'Leaderboard',
-                  style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
-              SizedBox(height: 30),
-
-              // Tab Navigation
-              Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
-
-                      blurRadius: 10,
-                      spreadRadius: 1,
-                      offset: Offset(0, 4),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Center(
+                    child: Text(
+                      'Leaderboard',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
                     ),
-                  ],
-                ),
-                child: Stack(
-                  children: [
-                    Obx(
-                      () => AnimatedAlign(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                        alignment: controller.selectedIndex.value == 0
-                            ? Alignment.centerLeft
-                            : controller.selectedIndex.value == 1
-                            ? Alignment.center
-                            : Alignment.centerRight,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Container(
-                            height: 45,
-                            width: MediaQuery.of(context).size.width / 4,
-                            decoration: BoxDecoration(
-                              color: icon,
-                              borderRadius: BorderRadius.circular(10),
+                  ),
+                  SizedBox(height: 30),
+
+                  // Tab Navigation
+                  Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+
+                          blurRadius: 10,
+                          spreadRadius: 1,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Stack(
+                      children: [
+                        Obx(
+                          () => AnimatedAlign(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                            alignment: controller.selectedIndex.value == 0
+                                ? Alignment.centerLeft
+                                : controller.selectedIndex.value == 1
+                                ? Alignment.center
+                                : Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 5,
+                              ),
+                              child: Container(
+                                height: 45,
+                                width: MediaQuery.of(context).size.width / 4,
+                                decoration: BoxDecoration(
+                                  color: icon,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Center(child: _buildTextOption('All time', 0)),
-                        _buildTextOption('This Week', 1),
-                        _buildTextOption('Month', 2),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Center(child: _buildTextOption('All time', 0)),
+                            _buildTextOption('This Week', 1),
+                            _buildTextOption('Month', 2),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
+                  ),
+                  // Podium Section - Top 3
+                  Container(
+                    height: 200,
+                    child: Row(
+                      spacing: 10,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        // Posisi 2 (Kiri)
+                        _buildPodiumItem(
+                          rank: 2,
+                          name: 'Jamal',
+                          score: '91.213',
+                          avatarColor: Colors.grey[400]!,
+                          height: 120,
+                        ),
+
+                        // Posisi 1 (Tengah - Tertinggi)
+                        _buildPodiumItem(
+                          rank: 1,
+                          name: 'Udin',
+                          score: '95.456',
+                          avatarColor: Colors.amber,
+                          height: 160,
+                        ),
+
+                        // Posisi 3 (Kanan)
+                        _buildPodiumItem(
+                          rank: 3,
+                          name: 'Budi',
+                          score: '88.876',
+                          avatarColor: Colors.brown[400]!,
+                          height: 100,
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // List Peringkat 4-8
+                ],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                color: const Color.fromARGB(255, 241, 241, 241),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                  child: ListView(
+                    children: [
+                      _buildRankItem(4, 'Agus', '86.785'),
+                      _buildRankItem(5, 'Sokid', '82.987'),
+                      _buildRankItem(6, 'Joko', '80.123'),
+                      _buildRankItem(7, 'Rina', '78.456'),
+                      _buildRankItem(8, 'Dewi', '75.789'),
+                    ],
+                  ),
                 ),
               ),
-              // Podium Section - Top 3
-              Container(
-                height: 200,
-                child: Row(
-                  spacing: 10,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    // Posisi 2 (Kiri)
-                    _buildPodiumItem(
-                      rank: 2,
-                      name: 'Jamal',
-                      score: '91.213',
-                      avatarColor: Colors.grey[400]!,
-                      height: 120,
-                    ),
-
-                    // Posisi 1 (Tengah - Tertinggi)
-                    _buildPodiumItem(
-                      rank: 1,
-                      name: 'Udin',
-                      score: '95.456',
-                      avatarColor: Colors.amber,
-                      height: 160,
-                    ),
-
-                    // Posisi 3 (Kanan)
-                    _buildPodiumItem(
-                      rank: 3,
-                      name: 'Budi',
-                      score: '88.876',
-                      avatarColor: Colors.brown[400]!,
-                      height: 100,
-                    ),
-                  ],
-                ),
-              ),
-
-              // List Peringkat 4-8
-              Expanded(
-                child: ListView(
-                  children: [
-                    _buildRankItem(4, 'Agus', '86.785'),
-                    _buildRankItem(5, 'Sokid', '82.987'),
-                    _buildRankItem(6, 'Joko', '80.123'),
-                    _buildRankItem(7, 'Rina', '78.456'),
-                    _buildRankItem(8, 'Dewi', '75.789'),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
