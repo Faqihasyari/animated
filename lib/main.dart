@@ -21,7 +21,6 @@ import 'package:get/get.dart';
 import 'package:flutter_application_1/app/modules/home/views/home_view.dart';
 
 void main() {
-  // ✅ HAPUS SEMUA Get.put() DI SINI - biarkan binding yang handle
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
@@ -33,9 +32,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      // ✅ HAPUS initialBinding atau ganti dengan Binding yang tepat
       initialBinding: HomeBinding(),
-      home: const BottomNavView(),
+      home: const SplashScreen(),
       getPages: [
         GetPage(
           name: '/signin',
@@ -71,12 +69,12 @@ class MainApp extends StatelessWidget {
         GetPage(
           name: '/leaderboard',
           page: () => const LeaderboardView(),
-          binding: LeaderboardBinding(), 
+          binding: LeaderboardBinding(),
         ),
-         GetPage(
+        GetPage(
           name: '/setting',
           page: () => SettingView(),
-          binding: SettingBinding(), 
+          binding: SettingBinding(),
         ),
       ],
     );
