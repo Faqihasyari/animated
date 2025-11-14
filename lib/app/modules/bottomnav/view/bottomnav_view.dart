@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/modules/bottomnav/controller/bottomnav_controller.dart';
 import 'package:flutter_application_1/app/modules/leaderboard/views/leaderboard_views.dart';
+import 'package:flutter_application_1/app/modules/setting/view/setting_view.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,7 +18,7 @@ class BottomNavView extends GetView<BottomNavController> {
       HomeView(),
       LeaderboardView(),
       Center(child: Text("🔖 Bookmark")),
-      Center(child: Text("data")),
+      SettingView(),
     ];
 
     return Obx(
