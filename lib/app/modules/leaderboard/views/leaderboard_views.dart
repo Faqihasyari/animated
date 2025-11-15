@@ -28,6 +28,50 @@ class LeaderboardView extends GetView<LeaderboardController> {
         child: Stack(
           // ✅ GUNAKAN STACK DI ROOT
           children: [
+            Positioned(
+              top: 150, // Posisi tepat di atas container putih
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // Posisi 2 (Kiri)
+                    _buildPodiumItem(
+                      rank: 2,
+                      name: 'Jamal',
+                      score: '91.213',
+                      avatarColor: Colors.grey[400]!,
+                      height: 120,
+                    ),
+
+                    SizedBox(width: 8),
+
+                    // Posisi 1 (Tengah - Tertinggi)
+                    _buildPodiumItem(
+                      rank: 1,
+                      name: 'Udin',
+                      score: '95.456',
+                      avatarColor: Colors.amber,
+                      height: 150,
+                    ),
+
+                    SizedBox(width: 8),
+
+                    // Posisi 3 (Kanan)
+                    _buildPodiumItem(
+                      rank: 3,
+                      name: 'Budi',
+                      score: '88.876',
+                      avatarColor: Colors.brown[400]!,
+                      height: 100,
+                    ),
+                  ],
+                ),
+              ),
+            ),
             // Container putih (background)
             Positioned(
               top: 300, // Mulai dari bawah header
@@ -135,50 +179,6 @@ class LeaderboardView extends GetView<LeaderboardController> {
             ),
 
             // Podium Section - Ditumpuk di atas container putih
-            Positioned(
-              top: 150, // Posisi tepat di atas container putih
-              left: 0,
-              right: 0,
-              child: Container(
-                height: 200,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    // Posisi 2 (Kiri)
-                    _buildPodiumItem(
-                      rank: 2,
-                      name: 'Jamal',
-                      score: '91.213',
-                      avatarColor: Colors.grey[400]!,
-                      height: 120,
-                    ),
-
-                    SizedBox(width: 8),
-
-                    // Posisi 1 (Tengah - Tertinggi)
-                    _buildPodiumItem(
-                      rank: 1,
-                      name: 'Udin',
-                      score: '95.456',
-                      avatarColor: Colors.amber,
-                      height: 150,
-                    ),
-
-                    SizedBox(width: 8),
-
-                    // Posisi 3 (Kanan)
-                    _buildPodiumItem(
-                      rank: 3,
-                      name: 'Budi',
-                      score: '88.876',
-                      avatarColor: Colors.brown[400]!,
-                      height: 100,
-                    ),
-                  ],
-                ),
-              ),
-            ),
           ],
         ),
       ),
