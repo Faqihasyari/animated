@@ -30,7 +30,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
           children: [
             // Container putih (background)
             Positioned(
-              top: 180, // Mulai dari bawah header
+              top: 300, // Mulai dari bawah header
               bottom: 0,
               left: 0,
               right: 0,
@@ -162,7 +162,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                       name: 'Udin',
                       score: '95.456',
                       avatarColor: Colors.amber,
-                      height: 160,
+                      height: 150,
                     ),
 
                     SizedBox(width: 8),
