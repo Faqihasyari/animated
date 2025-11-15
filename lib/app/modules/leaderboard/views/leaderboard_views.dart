@@ -25,131 +25,23 @@ class LeaderboardView extends GetView<LeaderboardController> {
             focal: Alignment.center,
           ),
         ),
-        child: Column(
+        child: Stack(
+          // ✅ GUNAKAN STACK DI ROOT
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Text(
-                      'Leaderboard',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                        fontSize: 25,
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 30),
-
-                  // Tab Navigation
-                  Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-
-                          blurRadius: 10,
-                          spreadRadius: 1,
-                          offset: Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      children: [
-                        Obx(
-                          () => AnimatedAlign(
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.easeInOut,
-                            alignment: controller.selectedIndex.value == 0
-                                ? Alignment.centerLeft
-                                : controller.selectedIndex.value == 1
-                                ? Alignment.center
-                                : Alignment.centerRight,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 5,
-                              ),
-                              child: Container(
-                                height: 45,
-                                width: MediaQuery.of(context).size.width / 4,
-                                decoration: BoxDecoration(
-                                  color: icon,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Center(child: _buildTextOption('All time', 0)),
-                            _buildTextOption('This Week', 1),
-                            _buildTextOption('Month', 2),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                  // Podium Section - Top 3
-                  Container(
-                    height: 200,
-                    child: Row(
-                      spacing: 10,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        // Posisi 2 (Kiri)
-                        _buildPodiumItem(
-                          rank: 2,
-                          name: 'Jamal',
-                          score: '91.213',
-                          avatarColor: Colors.grey[400]!,
-                          height: 120,
-                        ),
-
-                        // Posisi 1 (Tengah - Tertinggi)
-                        _buildPodiumItem(
-                          rank: 1,
-                          name: 'Udin',
-                          score: '95.456',
-                          avatarColor: Colors.amber,
-                          height: 160,
-                        ),
-
-                        // Posisi 3 (Kanan)
-                        _buildPodiumItem(
-                          rank: 3,
-                          name: 'Budi',
-                          score: '88.876',
-                          avatarColor: Colors.brown[400]!,
-                          height: 100,
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  // List Peringkat 4-8
-                ],
-              ),
-            ),
-            Expanded(
+            // Container putih (background)
+            Positioned(
+              top: 180, // Mulai dari bawah header
+              bottom: 0,
+              left: 0,
+              right: 0,
               child: ClipPath(
                 clipper: CurvedClipper(curveHeight: 60),
                 child: Container(
                   color: const Color.fromARGB(255, 241, 241, 241),
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                    padding: const EdgeInsets.fromLTRB(30, 80, 30, 0),
                     child: ListView(
                       children: [
-                        SizedBox(height: 40),
                         _buildRankItem(4, 'Agus', '86.785'),
                         _buildRankItem(5, 'Sokid', '82.987'),
                         _buildRankItem(6, 'Joko', '80.123'),
@@ -158,6 +50,132 @@ class LeaderboardView extends GetView<LeaderboardController> {
                       ],
                     ),
                   ),
+                ),
+              ),
+            ),
+
+            // Bagian atas dengan background gradient
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(30, 30, 30, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Text(
+                        'Leaderboard',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 30),
+
+                    // Tab Navigation
+                    Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.3),
+                            blurRadius: 10,
+                            spreadRadius: 1,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Stack(
+                        children: [
+                          Obx(
+                            () => AnimatedAlign(
+                              duration: Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                              alignment: controller.selectedIndex.value == 0
+                                  ? Alignment.centerLeft
+                                  : controller.selectedIndex.value == 1
+                                  ? Alignment.center
+                                  : Alignment.centerRight,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 5,
+                                ),
+                                child: Container(
+                                  height: 45,
+                                  width: MediaQuery.of(context).size.width / 4,
+                                  decoration: BoxDecoration(
+                                    color: icon,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Center(child: _buildTextOption('All time', 0)),
+                              _buildTextOption('This Week', 1),
+                              _buildTextOption('Month', 2),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Podium Section - Ditumpuk di atas container putih
+            Positioned(
+              top: 150, // Posisi tepat di atas container putih
+              left: 0,
+              right: 0,
+              child: Container(
+                height: 200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // Posisi 2 (Kiri)
+                    _buildPodiumItem(
+                      rank: 2,
+                      name: 'Jamal',
+                      score: '91.213',
+                      avatarColor: Colors.grey[400]!,
+                      height: 120,
+                    ),
+
+                    SizedBox(width: 8),
+
+                    // Posisi 1 (Tengah - Tertinggi)
+                    _buildPodiumItem(
+                      rank: 1,
+                      name: 'Udin',
+                      score: '95.456',
+                      avatarColor: Colors.amber,
+                      height: 160,
+                    ),
+
+                    SizedBox(width: 8),
+
+                    // Posisi 3 (Kanan)
+                    _buildPodiumItem(
+                      rank: 3,
+                      name: 'Budi',
+                      score: '88.876',
+                      avatarColor: Colors.brown[400]!,
+                      height: 100,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -175,22 +193,37 @@ class LeaderboardView extends GetView<LeaderboardController> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            blurRadius: 5,
+            spreadRadius: 1,
+          ),
+        ],
       ),
       child: Row(
         children: [
           Container(
             width: 30,
-            height: 65,
+            height: 30,
             decoration: BoxDecoration(color: Colors.transparent),
             child: Center(
               child: Text(
                 '$rank',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.black54,
+                ),
               ),
             ),
           ),
           SizedBox(width: 15),
-          CircleAvatar(radius: 30, backgroundColor: Colors.black),
+          CircleAvatar(
+            radius: 20,
+            backgroundColor: Colors.grey[300],
+            child: Icon(Icons.person, color: Colors.grey[600], size: 20),
+          ),
           SizedBox(width: 15),
           Expanded(
             child: Text(
@@ -215,7 +248,6 @@ class LeaderboardView extends GetView<LeaderboardController> {
     );
   }
 
-  // Widget untuk item podium (top 3)
   Widget _buildPodiumItem({
     required int rank,
     required String name,
@@ -227,8 +259,8 @@ class LeaderboardView extends GetView<LeaderboardController> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Container(
-          width: 30,
-          height: 30,
+          width: 40,
+          height: 40,
           decoration: BoxDecoration(
             border: Border.all(
               color: rank == 1
@@ -238,15 +270,26 @@ class LeaderboardView extends GetView<LeaderboardController> {
                   : rank == 3
                   ? Colors.grey
                   : Colors.transparent,
-              width: 2,
+              width: 3,
             ),
             color: Colors.white,
             shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 5,
+                spreadRadius: 1,
+              ),
+            ],
           ),
           child: Center(
             child: Text(
               '$rank',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.black87,
+              ),
             ),
           ),
         ),
@@ -254,14 +297,21 @@ class LeaderboardView extends GetView<LeaderboardController> {
 
         // Podium Stand
         Container(
-          width: 130,
+          width: 100,
           height: height,
           decoration: BoxDecoration(
-            color: icon.withOpacity(0.5),
+            color: Colors.white,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
             ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10,
+                spreadRadius: 2,
+              ),
+            ],
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -269,23 +319,24 @@ class LeaderboardView extends GetView<LeaderboardController> {
               CircleAvatar(
                 radius: 25,
                 backgroundColor: avatarColor,
-                child: Icon(Icons.person, color: Colors.white),
+                child: Icon(Icons.person, color: Colors.white, size: 30),
               ),
               SizedBox(height: 8),
               Text(
                 name,
                 style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
                 ),
+                textAlign: TextAlign.center,
               ),
               Text(
                 score,
                 style: GoogleFonts.poppins(
                   fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.grey[700],
                 ),
               ),
             ],
