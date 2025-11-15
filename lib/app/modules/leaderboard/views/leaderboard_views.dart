@@ -226,13 +226,11 @@ class LeaderboardView extends GetView<LeaderboardController> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        // Rank Number
         Container(
           width: 30,
           height: 30,
           decoration: BoxDecoration(
             border: Border.all(
-              // ternary operator
               color: rank == 1
                   ? Colors.yellow
                   : rank == 2
