@@ -33,7 +33,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
               left: 0,
               right: 0,
               child: Container(
-                height: 200,
+                height: 220,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -74,7 +74,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
             ),
             // Container putih (background)
             Positioned(
-              top: 300, // Mulai dari bawah header
+              top: 320, // Mulai dari bawah header
               bottom: 0,
               left: 0,
               right: 0,
