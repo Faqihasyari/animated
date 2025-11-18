@@ -315,8 +315,9 @@ class LeaderboardView extends GetView<LeaderboardController> {
             ],
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(height: 5),
               CircleAvatar(
                 radius: 25,
                 backgroundColor: avatarColor,
