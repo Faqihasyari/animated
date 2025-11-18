@@ -33,7 +33,8 @@ class LeaderboardView extends GetView<LeaderboardController> {
               left: 0,
               right: 0,
               child: Container(
-                height: 220,
+                height: 250,
+                color: Colors.black,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -44,7 +45,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                       name: 'Jamal',
                       score: '91.213',
                       avatarColor: Colors.grey[400]!,
-                      height: 120,
+                      height: 160,
                     ),
 
                     SizedBox(width: 8),
@@ -55,7 +56,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                       name: 'Udin',
                       score: '95.456',
                       avatarColor: Colors.amber,
-                      height: 150,
+                      height: 180,
                     ),
 
                     SizedBox(width: 8),
@@ -66,7 +67,7 @@ class LeaderboardView extends GetView<LeaderboardController> {
                       name: 'Budi',
                       score: '88.876',
                       avatarColor: Colors.brown[400]!,
-                      height: 100,
+                      height: 140,
                     ),
                   ],
                 ),
