@@ -32,9 +32,8 @@ class LeaderboardView extends GetView<LeaderboardController> {
               top: 150, // Posisi tepat di atas container putih
               left: 0,
               right: 0,
-              child: Container(
+              child: SizedBox(
                 height: 250,
-                color: Colors.black,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
